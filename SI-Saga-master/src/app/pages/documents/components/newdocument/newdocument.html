@@ -1,0 +1,70 @@
+<ba-card cardTitle="Bienvenido al sistema SI-SAGA" baCardClass="with-scroll">
+	<form class="form-horizontal">
+		<div class="container-fluid">
+			<div class="form-group row">
+				<h4>Ingrese los datos para crear un documento</h4>
+			</div>
+			<!-- Form group short name new document -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="shortnamendoc" class="control-label col-md-12">Nombre Corto:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="shortnamendoc" type="text" placeholder="Nombre Corto">
+					</div>
+				</div>
+				<!-- Form group name new document -->
+				<div class="form-group col-md-6">
+					<label for="namendoc" class="control-label col-md-12">Nombre:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="namendoc" placeholder="Nombre">
+					</div>
+				</div>
+			</div>
+			<!-- Form group description new document -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="descriptionndoc" class="control-label col-md-12">Descripción:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="descriptionndoc" placeholder="Descripción">
+					</div>
+				</div>
+				<!-- Form group creaton date new document -->
+				<div class="form-group col-md-6 ">
+					<label for="creationdatendoc" class="control-label col-md-12">Fecha de Creación:</label>
+					<div class="col-md-12">
+						<div class="input-group date">
+							<my-date-picker name="mydate" [options]="myDatePickerOptions"
+							[(ngModel)]="model" required></my-date-picker>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Form group asociated project new document -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="idnprojectndoc" class="control-label col-md-12">Proyecto:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="idnprojectndoc" placeholder="Proyecto Asociado">
+					</div>
+				</div>
+				<!-- Form group document new document -->
+				<div class="form-group col-md-6">
+					<label for="loaddocumentndoc" class="control-label col-md-12">Documento:</label>
+					<div class="col-md-12">
+						<ba-file-uploader></ba-file-uploader>
+					</div>
+				</div>
+			</div>
+			<!-- Form group bottons save, close for new document -->
+			<div class="form-group row">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+				</div>
+				<div class="col-md-3">
+				<modalsdocuments></modalsdocuments>
+				</div>
+			</div>
+		</div>
+	</form>
+</ba-card>

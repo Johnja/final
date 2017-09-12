@@ -1,0 +1,224 @@
+<ba-card cardTitle="Bienvenido al sistema SI-SAGA" baCardClass="with-scroll">
+	<form class="form-horizontal">
+		<div class="container-fluid">
+				<div class="form-group row">
+						<h4>Buscar proyectos o subproyectos para Editar </h4>
+					</div>
+					
+				<div class = "form-group row">
+						<div class="btn-group"  >
+					<button class="btn btn-primary" (click)="showFormEdit = 1" ng-click="formToggle()">Proyecto</button>
+					<button class="btn btn-primary" (click)="showFormEdit = 2" ng-click="formToggle()">Subproyecto</button>
+						</div>
+				</div>
+					<div class="box-shadow-border"></div>
+					<br>
+			<!-- Tab panel edit project  -->	
+			<div class = "form-edit-gp" *ngIf = "showFormEdit == 1">
+
+				<div class="form-group row">
+					<h4>Ingrese los nuevos datos: </h4>
+				</div>
+				<!-- Form group Id in edit project from edit project (find) -->
+				<div class="form-group row">
+					<div class="form-group col-md-6">
+						<label for="idprojectgneprj" class="control-label col-md-12">ID:</label>
+						<div class="col-md-12">
+							<input class="form-control" id="idprojectgneprj" type="text" placeholder="01" readonly/>
+						</div>
+					</div>
+					<!-- Form group short name in edit project -->
+					<div class="form-group col-md-6">
+						
+						<label for="shortnameeprj" class="control-label col-md-12">Nombre Corto:</label>
+						<div class="col-md-12">
+							<input class="form-control" id="shortnameeprj" type="text" placeholder="PRJ01PRB">
+						</div>
+					</div>
+				</div>
+				<!-- Form group name in edit project -->
+				<div class="form-group row">
+					<div class="form-group col-md-6">
+						<label for="nameeprj" class="control-label col-md-12">Nombre:</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" id="nameeprj" placeholder="Proyecto Prueba 1">
+						</div>
+					</div>
+					<!-- Form group description in edit project -->
+					<div class="form-group col-md-6">
+					
+						<label for="descriptioneprj" class="control-label col-md-12">Descripción:</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" id="descriptioneprj" placeholder="Proyecto para hacer pruebas">
+						</div>
+					</div>
+				</div>
+				<!-- Form group creation date in edit project -->
+				<div class="form-group row">
+						<!-- Form group label in edit project -->
+						<div class = "form-group col-md-6">
+								<label for="creationdateepj" class="control-label col-md-12">Fecha de Creación:</label>
+								<div class="col-md-12">
+									<div class="input-group date">
+										<my-date-picker name="mydate" [options]="myDatePickerOptions"
+										[(ngModel)]="model" required></my-date-picker>
+									</div>
+								</div>
+						</div>
+						<div class="form-group col-md-6">
+								<label for="typeprojectnprjgnr" class="control-label col-md-12">Tipo Proyecto:</label>
+								<div class="col-md-12">
+										<div class="form-group">
+												
+											<select class="form-control" id="exampleSelect2">
+												
+											  <option *ngFor = "let typeProject of typeProjects" [value] = "typeProject.name">{{typeProject.name}}</option>	
+			
+											 
+											</select>
+											  </div>
+								</div>
+						</div>
+						
+					</div>
+				<div class="form-group row">
+					<div class="form-group col-md-6">
+							<label for="authoreprj" class="control-label col-md-12">Autor:</label>
+							<div class="col-md-12">
+									<div class="form-group">
+											
+										<select  class="form-control" id="exampleSelect2">
+											
+										  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
+		
+										 
+										</select>
+											  </div>
+							</div>	
+					</div>
+					<!-- Form group author in edit project -->
+					<div class="form-group col-md-6">
+					
+					</div>
+				</div>
+			
+				<!-- Form group  bottons document, save, close in edit project-->
+				<div class="form-group row">
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4">
+						
+						<modalsprojects></modalsprojects>
+					</div>
+				</div>
+			</div>
+			<div class = "form-edit-gp" *ngIf = "showFormEdit == 2">
+
+			<div class="form-group row">
+				<h4>Ingrese los nuevos datos: </h4>
+			</div>
+			<!-- Form group Id in edit project from edit project (find) -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="idprojecteprj" class="control-label col-md-12">ID:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="idprojecteprj" type="text" placeholder="01" readonly/>
+					</div>
+				</div>
+				<!-- Form group short name in edit project -->
+				<div class="form-group col-md-6">
+					<label for="idpgreprj" class="control-label col-md-12">ID proyecto Raíz:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="idpgreprj" type="text" placeholder="010">
+					</div>
+				</div>
+			</div>
+			<!-- Form group name in edit project -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					
+					<label for="shortnameeprj" class="control-label col-md-12">Nombre Corto:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="shortnameeprj" type="text" placeholder="PRJ01PRB">
+					</div>
+				</div>
+				<!-- Form group description in edit project -->
+				<div class="form-group col-md-6">
+					
+					<label for="nameeprj" class="control-label col-md-12">Nombre:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="nameeprj" placeholder="Proyecto Prueba 1">
+					</div>
+				</div>
+			</div>
+			<!-- Form group creation date in edit project -->
+			<div class="form-group row">
+					<!-- Form group label in edit project -->
+					<div class = "form-group col-md-6">
+							
+							<label for="descriptioneprj" class="control-label col-md-12">Descripción:</label>
+							<div class="col-md-12">
+								<input type="text" class="form-control" id="descriptioneprj" placeholder="Proyecto para hacer pruebas">
+							</div>
+					</div>
+					<div class="form-group col-md-6">
+							<label for="creationdateepj" class="control-label col-md-12">Fecha de Creación:</label>
+							<div class="col-md-12">
+								<div class="input-group date">
+									<my-date-picker name="mydate" [options]="myDatePickerOptions"
+									[(ngModel)]="model" required></my-date-picker>
+								</div>
+							</div>
+					</div>
+					
+				</div>
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+						<label for="labeleprj" class="control-label  col-md-12">Etiqueta:</label>
+						<div class="col-md-12">
+								<div class="form-group">
+										
+									<select class="form-control text-center" id="exampleSelect2">
+										
+									  <option *ngFor = "let label of labels" [value] = "label.name">{{label.name}}</option>	
+	
+									 
+									</select>
+										  </div>
+						</div>
+				
+				</div>
+				<!-- Form group author in edit project -->
+				<div class="form-group col-md-6">
+					<label for="authoreprj" class="control-label col-md-12">Autor:</label>
+					<div class="col-md-12">
+							<div class="form-group">
+									
+								<select  class="form-control text-center" id="exampleSelect2">
+									
+								  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
+
+								 
+								</select>
+									  </div>
+					</div>
+				</div>
+			</div>
+		
+			<!-- Form group  bottons document, save, close in edit project-->
+			<div class="form-group row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+					
+					<modalssubprojects></modalssubprojects>
+				</div>
+			</div>
+		</div> <!-- div fomr pgr -->
+		</div>
+	</form>
+</ba-card>

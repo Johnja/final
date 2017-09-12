@@ -1,0 +1,80 @@
+<ba-card cardTitle="Bienvenido al sistema SI-SAGA" baCardClass="with-scroll">
+	<form class="form-horizontal">
+		<div class="container-fluid">
+
+			<div class="form-group row">
+				<h4>Ingrese los nuevos datos: </h4>
+			</div>
+			<!-- Form group Id in edit documents -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="idprojectedoc" class="control-label col-md-12">ID:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="idprojectedoc" type="text" placeholder="01" readonly/>
+					</div>
+				</div>
+				<!-- Form group short name in edit documents -->
+				<div class="form-group col-md-6">
+					<label for="shortnameedoc" class="control-label col-md-12">Nombre Corto:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="shortnameedoc" type="text" placeholder="DC01">
+					</div>
+				</div>
+			</div>
+			<!-- Form group name in  edit documents -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="nameedoc" class="control-label col-md-12">Nombre:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="nameedoc" placeholder="Documento prueba 1">
+					</div>
+				</div>
+				<!-- Form group description in edit documents -->
+				<div class="form-group col-md-6">
+					<label for="descriptionedoc" class="control-label col-md-12">Descripción:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="descriptionedoc" placeholder="Descripción prueba 1">
+					</div>
+				</div>
+			</div>
+			<!-- Form group creation date in  edit documents -->
+			<div class="form-group  row">
+				<div class="form-group col-md-6">
+					<label for="creationdateedoc" class="control-label col-md-12">Fecha de Creación:</label>
+					<div class="col-md-12">
+						<div class="input-group date">
+							<my-date-picker name="mydate" [options]="myDatePickerOptions"
+							[(ngModel)]="model" required></my-date-picker>
+						</div>
+					</div>
+				</div>
+				<!-- Form group project in  edit documents -->
+				<div class="form-group col-md-6">
+					<label for="idnprjedoc" class="control-label col-md-12">Proyecto:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="idnprjedoc" placeholder="01">
+					</div>
+				</div>
+			</div>
+			<!-- Form group document load in  edit documents -->
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="loaddocumentedoc" class="control-label col-md-12">Documento:</label>
+					<div class="col-md-12">
+						<ba-file-uploader></ba-file-uploader>
+					</div>
+				</div>
+			</div>
+			<!-- Form group bottons save, close in edit documents -->
+			<div class="form-group row">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+				</div>
+				<div class="col-md-3">
+					<modalsdocuments></modalsdocuments>
+				</div>
+			</div>
+		</div>
+	</form>
+</ba-card>

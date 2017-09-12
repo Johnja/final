@@ -1,0 +1,94 @@
+<ba-card cardTitle="Bienvenido al sistema SI-SAGA" baCardClass="with-scroll">
+	<form class="form-horizontal">
+		<div class="container-fluid">
+			<div class="form-group row">
+				<h4>Ingrese los datos para crear un subproyecto </h4>
+			</div>
+			<!-- Form group short name new project -->
+			<div class="form-group row">
+					<div class="form-group col-md-6">
+						<label for="idprjgnrnprj" class="control-label col-md-12">ID Proyecto Raíz:</label>
+						<div class="col-md-12">
+							<input class="form-control" id="idprjgnrnprj" type="text" placeholder="ID Proyecto Raíz">
+						</div>
+					</div>
+				<div class="form-group col-md-6">
+					<label for="shortnamenprj" class="control-label col-md-12">Nombre Corto:</label>
+					<div class="col-md-12">
+						<input class="form-control" id="shortnamenprj" type="text" placeholder="Nombre Corto">
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="namenprj" class="control-label col-md-12">Nombre:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="namenprj" placeholder="Nombre">
+					</div>
+				</div>
+			<!-- Form group description new project -->
+				<div class="form-group col-md-6">
+					<label for="descriptionnproj" class="control-label col-md-12">Descripción:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="descriptionprj" placeholder="Descripción">
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="form-group col-md-6 ">
+						<label for="labelnprj" class="control-label  col-md-12">Etiqueta:</label>
+						<div class="col-md-12">
+								<div class="form-group">
+										
+									<select class="form-control" id="exampleSelect2">
+										
+									  <option *ngFor = "let label of labels" [value] = "label.name">{{label.name}}</option>	
+	
+									 
+									</select>
+									  </div>
+						</div>
+				</div>
+			<!-- Form group author for new project -->
+				<div class="form-group col-md-6">
+					<label for="authornprj" class="control-label col-md-12">Autor:</label>
+					<div class="col-md-12">
+							<div class="form-group">
+									
+								<select class="form-control" id="exampleSelect2">
+									
+								  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
+
+								 
+								</select>
+								  </div>
+					</div>
+				</div>
+			</div>
+				<!-- Form group for label in new project -->
+				<div class="form-group row">
+				<div class="form-group col-md-6">
+						<label for="creationdatenprj" class="control-label col-md-12">Fecha de Creación:</label>
+						<div class="col-md-12">
+							<div class="input-group date">
+								<my-date-picker name="mydate" [options]="myDatePickerOptions"
+								[(ngModel)]="model" required></my-date-picker>
+							</div>
+						</div>
+			
+				</div>
+			</div>
+			<!-- Form group bottons document, save, close in new project -->
+			<div class="form-group row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+					<modalssubprojects></modalssubprojects>
+					
+				</div>
+			</div>
+		</div>
+	</form>
+</ba-card>
