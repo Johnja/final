@@ -15,9 +15,10 @@ import {Users} from '../../../../theme/services/viewUsersService/users';
 })
 export class Edituser {
   roles: Role[];
-  userEdit: Users = new Users();
+  user: Users = new Users();
   msgError: string;
-  users: Users[];
+  users = [
+  ];
   
   constructor( 
     private _roleService: RoleService, 
@@ -26,7 +27,8 @@ export class Edituser {
     private router: Router ) {
   
     this.loadRoles();
-    this.loadUsers();
+   // this.loadUsers();
+  
    
   }
 
@@ -40,9 +42,9 @@ export class Edituser {
 
  
 
-      updateUser(userEdit: Users){
-        if(!userEdit) return;
-        this._viewUsersService.putUser(userEdit)
+      updateUser(){
+      //  if (!this.user) return;
+        this._viewUsersService.putUser(this.user)
         .subscribe(
           rt => console.log(rt),
           er => console.log(er),
@@ -64,11 +66,12 @@ export class Edituser {
     
     this._roleService.getRole().subscribe(roles =>this.roles = roles, error => this.msgError = <any>error);
         }
-        loadUsers(){
+     
+     //   loadUsers(){
           
           
-          this._viewUsersService.getUsers().subscribe(users => this.users = users, error => this.msgError = <any>error);
-              }
+       //   this._viewUsersService.getUsers().subscribe(users => this.users = users, error => this.msgError = <any>error);
+         //     }
 
 
 }

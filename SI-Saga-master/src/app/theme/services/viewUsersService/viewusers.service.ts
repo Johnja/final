@@ -13,6 +13,7 @@ export class ViewUsersService {
   private url = 'http://localhost:8080/user';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
+private user: Users = new Users();
  
 
   constructor(private http: Http) {
@@ -35,7 +36,8 @@ export class ViewUsersService {
           }
 
           putUser(user: Users){
-            let url  = `${this.url}/edit/save`;
+            
+let url  = `${this.url}/edit/${user.idnuser}`;
 let iJson = JSON.stringify(user);
 return this.http.put(url,iJson,{headers: this.headers})
 .map(r => r.json())
