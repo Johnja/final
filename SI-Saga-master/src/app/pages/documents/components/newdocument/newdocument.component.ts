@@ -9,6 +9,7 @@ import {ViewSubProjectsService} from '../../../../theme/services/viewSubProjects
 import {SubProject} from '../../../../theme/services/viewSubProjectsService/subproject';
 import { NgUploaderOptions } from 'ngx-uploader';
 
+
 @Component({
   selector: 'newdocument',
   templateUrl: './newdocument.html',
@@ -26,6 +27,8 @@ public fileUploaderOptions:NgUploaderOptions = {
   url: '',
 };
 
+
+
   public  myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
@@ -37,6 +40,7 @@ public fileUploaderOptions:NgUploaderOptions = {
     private route: ActivatedRoute,
     private router: Router) {
 
+    
       
  }
  
@@ -71,7 +75,16 @@ public fileUploaderOptions:NgUploaderOptions = {
       
       }
   
-   
+      updateDocument(){
+        //  if (!this.document) return;
+          this._viewDocumentsService.putDocument(this.document)
+          .subscribe(
+            rt => console.log(rt),
+            er => console.log(er),
+            () => this.goLista()
+          );
+            }
+          
 
 
 }

@@ -35,7 +35,7 @@ export class ViewDocumentsService {
       .catch(this.handleError);
           }
 
-          putUser(document: Documents){
+          putDocument(document: Documents){
             
 let url  = `${this.url}/edit/${document.idndocument}`;
 let iJson = JSON.stringify(document);

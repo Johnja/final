@@ -14,6 +14,7 @@ import { ViewDocumentsService} from '../../theme/services/viewDocumentsService/v
 import { HttpModule } from "@angular/http";
 import { MyDatePickerModule } from 'mydatepicker';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     NgbDropdownModule,
     routing,
     HttpModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    
   ],
   declarations: [
     Documents,
@@ -31,7 +33,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     Viewdocuments,
     Editdocument,
     ModalsDocuments,
-    DefaultModalsDocuments
+    DefaultModalsDocuments,
+  
    
   ],
    entryComponents: [

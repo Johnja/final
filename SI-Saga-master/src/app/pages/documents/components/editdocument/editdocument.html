@@ -5,76 +5,139 @@
 			<div class="form-group row">
 				<h4>Ingrese los nuevos datos: </h4>
 			</div>
-			<!-- Form group Id in edit documents -->
+			
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="idprojectedoc" class="control-label col-md-12">ID:</label>
+					<label for="idndocument" class="control-label col-md-12">ID:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="idprojectedoc" type="text" placeholder="01" readonly/>
+						<input class="form-control" id="idndocument"  type="text" placeholder="01" 
+						[(ngModel)]="document.idndocument" name="idndocument" #idndocument="ngModel" required readonly/>
 					</div>
 				</div>
-				<!-- Form group short name in edit documents -->
+				
 				<div class="form-group col-md-6">
-					<label for="shortnameedoc" class="control-label col-md-12">Nombre Corto:</label>
+					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortnameedoc" type="text" placeholder="DC01">
-					</div>
-				</div>
-			</div>
-			<!-- Form group name in  edit documents -->
-			<div class="form-group row">
-				<div class="form-group col-md-6">
-					<label for="nameedoc" class="control-label col-md-12">Nombre:</label>
-					<div class="col-md-12">
-						<input type="text" class="form-control" id="nameedoc" placeholder="Documento prueba 1">
-					</div>
-				</div>
-				<!-- Form group description in edit documents -->
-				<div class="form-group col-md-6">
-					<label for="descriptionedoc" class="control-label col-md-12">Descripción:</label>
-					<div class="col-md-12">
-						<input type="text" class="form-control" id="descriptionedoc" placeholder="Descripción prueba 1">
-					</div>
-				</div>
-			</div>
-			<!-- Form group creation date in  edit documents -->
-			<div class="form-group  row">
-				<div class="form-group col-md-6">
-					<label for="creationdateedoc" class="control-label col-md-12">Fecha de Creación:</label>
-					<div class="col-md-12">
-						<div class="input-group date">
-							<my-date-picker name="mydate" [options]="myDatePickerOptions"
-							[(ngModel)]="model" required></my-date-picker>
+						<input class="form-control" id="shortname" type="text" placeholder="DC01" 
+						[(ngModel)]="document.shortname" name="shortname" #shortname="ngModel" required  maxlength="20" minlength="3">
+						<div *ngIf="shortname.errors">
+							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+						<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+							</div>
+		
 						</div>
 					</div>
 				</div>
-				<!-- Form group project in  edit documents -->
-				<div class="form-group col-md-6">
-					<label for="idnprjedoc" class="control-label col-md-12">Proyecto:</label>
-					<div class="col-md-12">
-						<input type="text" class="form-control" id="idnprjedoc" placeholder="01">
-					</div>
-				</div>
 			</div>
-			<!-- Form group document load in  edit documents -->
+
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="loaddocumentedoc" class="control-label col-md-12">Documento:</label>
+					<label for="name" class="control-label col-md-12">Nombre:</label>
 					<div class="col-md-12">
-						<ba-file-uploader></ba-file-uploader>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Documento prueba 1"
+						[(ngModel)]="document.name"  #name="ngModel" required  maxlength="20" minlength="3">
+						<div *ngIf="name.errors">
+							<div *ngIf="name.touched && !name.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+						<div *ngIf="!name.validator.minlength && name.touched" class="alert alert-danger ">
+								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+							</div>
+		
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group col-md-6">
+					<label for="description" class="control-label col-md-12">Descripción:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="description"  name="description" placeholder="Descripción prueba 1"
+						[(ngModel)]="document.description"  #description="ngModel" required  maxlength="50" minlength="3">
+						<div *ngIf="description.errors">
+							<div *ngIf="description.touched && !description.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+						<div *ngIf="!description.validator.minlength && description.touched" class="alert alert-danger ">
+								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+							</div>
+		
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Form group bottons save, close in edit documents -->
+
+			<div class="form-group  row">
+				<div class="form-group col-md-6">
+					<label for="creationdate" class="control-label col-md-12">Fecha de Creación:</label>
+					<div class="col-md-12">
+						<div class="input-group date">
+							<my-date-picker name="creationdate" [options]="myDatePickerOptions.dateFormat"
+							
+							[(ngModel)]="document.creationdate" #creationdate="ngModel" required></my-date-picker>
+						</div>
+					</div>
+				</div>
+			
+				<div class="form-group col-md-6">
+					<label for="idnprj" class="control-label col-md-12">Proyecto:</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" id="idnprj" name="idnprj" placeholder="01" 
+						[(ngModel)]="document.idnprj"  #idnprj="ngModel" required>
+						<div *ngIf="idnprj.errors">
+							<div *ngIf="idnprj.touched && !idnprj.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+				
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="file" class="control-label col-md-12">Documento:</label>
+					<div class="col-md-12">
+						<ba-file-uploader [(ngModel)]="document.file" name="file" #file="ngModel" required></ba-file-uploader>
+						<div *ngIf="file.errors">
+							<div *ngIf="file.touched && !file.valid" class="alert alert-danger" >
+							
+									
+									<strong>Warning!</strong>Campo requerido.
+								
+									  
+						</div>
+						
+		
+						</div>
+					</div>
+				</div>
+			</div>
+		
 			<div class="form-group row">
 				<div class="col-md-3">
 				</div>
 				<div class="col-md-6">
 				</div>
 				<div class="col-md-3">
-					<modalsdocuments></modalsdocuments>
+					
+					<button class="btn btn-primary" (click)="updateDocument()" >Guardar</button>	
+					
+
+					<button class="btn btn-success" >Cancelar</button>
 				</div>
 			</div>
+		
 		</div>
 	</form>
 </ba-card>

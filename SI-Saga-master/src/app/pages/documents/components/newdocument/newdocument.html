@@ -29,7 +29,8 @@
 				<div class="form-group col-md-6">
 					<label for="name" class="control-label col-md-12">Nombre:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" [(ngModel)]="document.name"  #name="ngModel" required  maxlength="20" minlength="3">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" 
+						[(ngModel)]="document.name"  #name="ngModel" required  maxlength="20" minlength="3">
 						<div *ngIf="name.errors">
 							<div *ngIf="name.touched && !name.valid" class="alert alert-danger" >
 									
@@ -49,7 +50,8 @@
 				<div class="form-group col-md-6">
 					<label for="description" class="control-label col-md-12">Descripción:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="description"  name="description" placeholder="Descripción" [(ngModel)]="document.description"  #description="ngModel" required  maxlength="20" minlength="3">
+						<input type="text" class="form-control" id="description"  name="description" placeholder="Descripción" 
+						[(ngModel)]="document.description"  #description="ngModel" required  maxlength="20" minlength="3">
 						<div *ngIf="description.errors">
 							<div *ngIf="description.touched && !description.valid" class="alert alert-danger" >
 									
@@ -68,7 +70,9 @@
 					<label for="creationdate" class="control-label col-md-12">Fecha de Creación:</label>
 					<div class="col-md-12">
 						<div class="input-group date">
+								
 							<my-date-picker name="creationdate" [options]="myDatePickerOptions.dateFormat"
+							
 							[(ngModel)]="document.creationdate" #creationdate="ngModel" required></my-date-picker>
 						</div>
 					</div>
@@ -79,16 +83,15 @@
 				<div class="form-group col-md-6">
 					<label for="idnprj" class="control-label col-md-12">Proyecto:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="idnprj" name="idnprj" placeholder="Proyecto Asociado" [(ngModel)]="document.idnprj"  #idnprj="ngModel" required> 
+						<input type="text" class="form-control" id="idnprj" name="idnprj" placeholder="Proyecto Asociado" 
+						[(ngModel)]="document.idnprj"  #idnprj="ngModel" required> 
 						<div *ngIf="idnprj.errors">
 							<div *ngIf="idnprj.touched && !idnprj.valid" class="alert alert-danger" >
 									
 									<strong>Warning!</strong>Campo requerido.
 										  
 						</div>
-						<div *ngIf="!idnprj.validator.minlength && idnprj.touched" class="alert alert-danger ">
-								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
-							</div>
+					
 		
 						</div>
 					</div>
@@ -102,7 +105,8 @@
 							<div *ngIf="file.touched && !file.valid" class="alert alert-danger" >
 									
 									<strong>Warning!</strong>Campo requerido.
-										  
+								
+									  
 						</div>
 						
 		
