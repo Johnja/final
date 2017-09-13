@@ -4,8 +4,7 @@ export class Documents {
     shortname: string;
     name: string;
     description: string;
-    creationdate: number;
-    
+    creationdate: string;
     idnprj: number;
-
+    file: string;
     }

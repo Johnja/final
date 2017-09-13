@@ -10,20 +10,38 @@ import 'rxjs/add/operator/catch';
 
 export class ViewProjectsService {
 
-  private url = 'http://localhost:8080/gnrproject/findall';
+  private url = 'http://localhost:8080/gnrproject';
   private headers = new Headers({ 'Content-Type': 'application/json' });
-
+private project: Projects = new Projects();
 
   constructor(private http: Http) {
     
   }
 
   getProjects(): Observable<Projects[]>{  
-    let url = `${this.url}`;
+    let url = `${this.url}/findall`;
      return this.http.get(url)
      .map(r => r.json())
      .catch(this.handleError);
     }
+
+    addProject(project: Projects){
+      let url  = `${this.url}/save`;
+      let iJson = JSON.stringify(project);
+      return this.http.post(url, iJson, {headers: this.headers})
+      .map(r => r.json())
+      .catch(this.handleError);
+          }
+
+          putProject(project: Projects){
+            
+let url  = `${this.url}/edit/${project.idgnrprj}`;
+let iJson = JSON.stringify(project);
+return this.http.put(url,iJson,{headers: this.headers})
+.map(r => r.json())
+.catch(this.handleError);
+
+}
     
     private handleError(error:Response | any){
     

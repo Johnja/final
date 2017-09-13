@@ -19,6 +19,7 @@ user: Users = new Users();
 submitted = false;
   roles: Role[];
   msgError: string;
+
   constructor(
     private _roleService: RoleService, 
     private _viewUsersService: ViewUsersService,
@@ -38,7 +39,6 @@ ngOnitInit(){
   }
 
 
-
 goLista(){
 
 let link = [];
@@ -47,7 +47,7 @@ this.router.navigate(link);
 }
 
   saveUser(){
-    
+   
     this._viewUsersService.addUser(this.user)
     .subscribe(
       rt => console.log(rt),

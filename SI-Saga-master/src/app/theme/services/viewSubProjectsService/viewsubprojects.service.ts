@@ -10,21 +10,42 @@ import 'rxjs/add/operator/catch';
 
 export class ViewSubProjectsService {
 
-  private url = 'http://localhost:8080/project/findall';
+  private url = 'http://localhost:8080/project';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
+  private subproject: SubProject = new SubProject();
+ 
 
   constructor(private http: Http) {
     
+  
   }
 
   getSubProjects(): Observable<SubProject[]>{  
-    let url = `${this.url}`;
+    let url = `${this.url}/findall`;
      return this.http.get(url)
      .map(r => r.json())
      .catch(this.handleError);
     }
-    
+
+    addSubProject(subproject: SubProject){
+      let url  = `${this.url}/save`;
+      let iJson = JSON.stringify(subproject);
+      return this.http.post(url, iJson, {headers: this.headers})
+      .map(r => r.json())
+      .catch(this.handleError);
+          }
+
+          putSubProject(subproject: SubProject){
+            
+let url  = `${this.url}/edit/${subproject.idnprj}`;
+let iJson = JSON.stringify(subproject);
+return this.http.put(url,iJson,{headers: this.headers})
+.map(r => r.json())
+.catch(this.handleError);
+          }
+          
+          
     private handleError(error:Response | any){
     
     let errMsg: string;

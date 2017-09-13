@@ -6,13 +6,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/catch';
 
+
 @Injectable()
 
 export class ViewDocumentsService {
 
   
-  private url = 'http://localhost:8080/document/findall';
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private url = 'http://localhost:8080/document';
+  private headers = new Headers({ 'Content-Type': 'application/json'});
 
  
 
@@ -20,12 +21,29 @@ export class ViewDocumentsService {
     
   }
   getDocuments(): Observable<Documents[]>{  
-    let url = `${this.url}`;
+    let url = `${this.url}/findall`;
      return this.http.get(url)
      .map(r => r.json())
      .catch(this.handleError);
     }
     
+    addDocument(document: Documents){
+      let url  = `${this.url}/save`;
+      let iJson = JSON.stringify(document);
+      return this.http.post(url, iJson, {headers: this.headers})
+      .map(r => r.json())
+      .catch(this.handleError);
+          }
+
+          putUser(document: Documents){
+            
+let url  = `${this.url}/edit/${document.idndocument}`;
+let iJson = JSON.stringify(document);
+return this.http.put(url,iJson,{headers: this.headers})
+.map(r => r.json())
+.catch(this.handleError);
+
+}
     private handleError(error:Response | any){
     
     let errMsg: string;
