@@ -29,7 +29,8 @@ msgError: string;
 author: Authors = new Authors();
 typeProject: TypeProjects = new TypeProjects();
 
-  constructor(private _viewAuthorsService : ViewAuthorsService, private _typeProjectsService : TypeProjectsService,
+  constructor(private _viewAuthorsService : ViewAuthorsService, 
+    private _typeProjectsService : TypeProjectsService,
     private _viewProjectsService: ViewProjectsService,
     private route: ActivatedRoute, 
     private router: Router ) {

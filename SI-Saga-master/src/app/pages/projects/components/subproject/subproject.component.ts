@@ -57,12 +57,6 @@ subProject: SubProject = new SubProject();
 
       saveSubProject(){
 
-        
-        this.subProject.shortname = 'SPRJ11';
-        this.subProject.description = 'SubProyecto Prueba 1';
-        this.subProject.name = 'Prueba 1';
-        this.subProject.creationdate = '2017-09-10';
-        this.subProject.idgnrprj = 6;
 
          this._viewSubProjectsService.addSubProject(this.subProject)
          .subscribe(

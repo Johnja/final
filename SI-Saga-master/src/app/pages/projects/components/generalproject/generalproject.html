@@ -9,7 +9,8 @@
 				<div class="form-group col-md-6">
 					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" [(ngModel)]="project.shortname"  #shortname="ngModel" required  maxlength="20" minlength="3">
+						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" 
+						[(ngModel)]="project.shortname"  #shortname="ngModel" required  maxlength="20" minlength="3">
 						<div *ngIf="shortname.errors">
 							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger" >
 									
@@ -26,7 +27,8 @@
 				<div class="form-group col-md-6">
 					<label for="name" class="control-label col-md-12">Nombre:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" name="name" id="name" placeholder="Nombre" [(ngModel)]="project.name"  #name="ngModel" required  maxlength="20" minlength="3">
+						<input type="text" class="form-control" name="name" id="name" placeholder="Nombre" 
+						[(ngModel)]="project.name"  #name="ngModel" required  maxlength="20" minlength="3">
 						<div *ngIf="name.errors">
 							<div *ngIf="name.touched && !name.valid" class="alert alert-danger" >
 									
@@ -46,7 +48,8 @@
 				<div class="form-group col-md-6">
 					<label for="description" class="control-label col-md-12">Descripción:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" name="description" id="description" placeholder="Descripción" [(ngModel)]="project.description"  #description="ngModel" required  maxlength="50" minlength="3">
+						<input type="text" class="form-control" name="description" id="description" placeholder="Descripción" 
+						[(ngModel)]="project.description"  #description="ngModel" required  maxlength="50" minlength="3">
 						<div *ngIf="description.errors">
 							<div *ngIf="description.touched && !description.valid" class="alert alert-danger" >
 									
@@ -65,7 +68,7 @@
 						<label for="creationdate" class="control-label col-md-12">Fecha de Creación:</label>
 						<div class="col-md-12">
 							<div class="input-group date">
-								<my-date-picker name="creationdate" [options]="dateFormat"
+								<my-date-picker name="creationdate" [options]="myDatePickerOptions"
 								[(ngModel)]="project.creationdate" required></my-date-picker>
 							</div>
 						</div>
@@ -79,22 +82,24 @@
 					<div class="col-md-12">
 							<div  class="form-group">
 								
-									<select  class="form-control" id="idnauthor" name="idnauthor" [(ngModel)]="author.idnauthor"  #idnauthor="ngModel" required>
+									<select  class="form-control" id="idnauthor" name="idnauthor" 
+									[(ngModel)]="author.idnauthor"  #idnauthor="ngModel" required>
 										
 									  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
 
 									 
 									</select>
+									<div *ngIf="idnauthor.errors">
+										<div *ngIf="idnauthor.touched && !idnauthor.valid" class="alert alert-danger" >
+												
+												<strong>Warning!</strong>Campo requerido.
+													  
+									</div>
+								
+					
+									</div>
 								  </div>
-								  <div *ngIf="idnauthor.errors">
-									<div *ngIf="idnauthor.touched && !idnauthor.valid" class="alert alert-danger" >
-											
-											<strong>Warning!</strong>Campo requerido.
-												  
-								</div>
-							
-				
-								</div>
+								
 					</div>
 				</div>
 				<!-- Form group for label in new project -->
@@ -103,24 +108,24 @@
 					<div class="col-md-12">
 							<div class="form-group">
 									
-								<select class="form-control" id="idnprjtype" name="idnprjtype" [(ngModel)]="author.idnprjtyp"  #idnprjtype="ngModel" required>
+								<select class="form-control" id="idnprjtype" name="idnprjtype" 
+								[(ngModel)]="author.idnprjtyp"  #idnprjtype="ngModel" required>
 									
 								  <option *ngFor = "let typeProject of typeProjects" [value] = "typeProject.name">{{typeProject.name}}</option>	
 
 								 
 								</select>
-								  </div>
-								  <div *ngIf="idnprjtype.errors">
+								<div *ngIf="idnprjtype.errors">
 									<div *ngIf="idnprjtype.touched && !idnprjtype.valid" class="alert alert-danger" >
 											
 											<strong>Warning!</strong>Campo requerido.
 												  
 								</div>
-								<div *ngIf="!idnprjtype.validator.minlength && idnprjtype.touched" class="alert alert-danger ">
-										<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
-									</div>
+							
 				
 								</div>
+								  </div>
+								
 					</div>
 				</div>
 			</div>

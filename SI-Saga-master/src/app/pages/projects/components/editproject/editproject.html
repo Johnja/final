@@ -22,34 +22,71 @@
 				<!-- Form group Id in edit project from edit project (find) -->
 				<div class="form-group row">
 					<div class="form-group col-md-6">
-						<label for="idprojectgneprj" class="control-label col-md-12">ID:</label>
+						<label for="idgnrprj" class="control-label col-md-12">ID:</label>
 						<div class="col-md-12">
-							<input class="form-control" id="idprojectgneprj" type="text" placeholder="01" readonly/>
+							<input class="form-control" id="idgnrprj" name="idgnrprj" type="text" placeholder="01" 
+							[(ngModel)]="project.idgnrprj"  #idgnrprj="ngModel" required readonly/>
 						</div>
 					</div>
 					<!-- Form group short name in edit project -->
 					<div class="form-group col-md-6">
 						
-						<label for="shortnameeprj" class="control-label col-md-12">Nombre Corto:</label>
+						<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
 						<div class="col-md-12">
-							<input class="form-control" id="shortnameeprj" type="text" placeholder="PRJ01PRB">
+							<input class="form-control" id="shortname" name="shortname" type="text" placeholder="PRJ01PRB"
+							[(ngModel)]="project.shortname"  #shortname="ngModel" required  maxlength="20" minlength="3">
+							<div *ngIf="shortname.errors">
+								<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger" >
+										
+										<strong>Warning!</strong>Campo requerido.
+											  
+							</div>
+							<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+									<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+								</div>
+			
+							</div>
 						</div>
 					</div>
 				</div>
 				<!-- Form group name in edit project -->
 				<div class="form-group row">
 					<div class="form-group col-md-6">
-						<label for="nameeprj" class="control-label col-md-12">Nombre:</label>
+						<label for="name" class="control-label col-md-12">Nombre:</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control" id="nameeprj" placeholder="Proyecto Prueba 1">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Proyecto Prueba 1"
+							[(ngModel)]="project.name"  #name="ngModel" required  maxlength="20" minlength="3">
+							<div *ngIf="name.errors">
+								<div *ngIf="name.touched && !name.valid" class="alert alert-danger" >
+										
+										<strong>Warning!</strong>Campo requerido.
+											  
+							</div>
+							<div *ngIf="!name.validator.minlength && name.touched" class="alert alert-danger ">
+									<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+								</div>
+			
+							</div>
 						</div>
 					</div>
 					<!-- Form group description in edit project -->
 					<div class="form-group col-md-6">
 					
-						<label for="descriptioneprj" class="control-label col-md-12">Descripción:</label>
+						<label for="description" class="control-label col-md-12">Descripción:</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control" id="descriptioneprj" placeholder="Proyecto para hacer pruebas">
+							<input type="text" class="form-control" id="description" name="description" placeholder="Descripción" 
+							[(ngModel)]="project.description"  #description="ngModel" required  maxlength="50" minlength="3">
+									<div *ngIf="description.errors">
+							<div *ngIf="description.touched && !description.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+						<div *ngIf="!description.validator.minlength && description.touched" class="alert alert-danger ">
+								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+							</div>
+		
+						</div>
 						</div>
 					</div>
 				</div>
@@ -60,22 +97,32 @@
 								<label for="creationdateepj" class="control-label col-md-12">Fecha de Creación:</label>
 								<div class="col-md-12">
 									<div class="input-group date">
-										<my-date-picker name="mydate" [options]="myDatePickerOptions"
-										[(ngModel)]="model" required></my-date-picker>
+										<my-date-picker name="creationdate" [options]="myDatePickerOptions"
+										[(ngModel)]="project.creationdate" required></my-date-picker>
 									</div>
 								</div>
 						</div>
 						<div class="form-group col-md-6">
-								<label for="typeprojectnprjgnr" class="control-label col-md-12">Tipo Proyecto:</label>
+								<label for="idnprjtype" class="control-label col-md-12">Tipo Proyecto:</label>
 								<div class="col-md-12">
 										<div class="form-group">
 												
-											<select class="form-control" id="exampleSelect2">
+											<select class="form-control" id="idnprjtype" name="idnprjtype"
+											[(ngModel)]="author.idnprjtyp"  #idnprjtype="ngModel" required>
 												
 											  <option *ngFor = "let typeProject of typeProjects" [value] = "typeProject.name">{{typeProject.name}}</option>	
 			
 											 
 											</select>
+											<div *ngIf="idnprjtype.errors">
+												<div *ngIf="idnprjtype.touched && !idnprjtype.valid" class="alert alert-danger" >
+														
+														<strong>Warning!</strong>Campo requerido.
+															  
+											</div>
+										
+							
+											</div>
 											  </div>
 								</div>
 						</div>
@@ -87,12 +134,22 @@
 							<div class="col-md-12">
 									<div class="form-group">
 											
-										<select  class="form-control" id="exampleSelect2">
+										<select  class="form-control" id="exampleSelect2"
+										[(ngModel)]="author.idnauthor"  #idnauthor="ngModel" required>
 											
 										  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
 		
 										 
 										</select>
+										<div *ngIf="idnauthor.errors">
+											<div *ngIf="idnauthor.touched && !idnauthor.valid" class="alert alert-danger" >
+													
+													<strong>Warning!</strong>Campo requerido.
+														  
+										</div>
+									
+						
+										</div>
 											  </div>
 							</div>	
 					</div>
@@ -109,7 +166,10 @@
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
+						<button class="btn btn-primary" >Subproyecto</button>	
 						
+						<button class="btn btn-success" (click)="saveProject()" >Guardar</button>
+						<button class="btn btn-info" >Cancelar</button>
 						
 					</div>
 				</div>
@@ -122,16 +182,18 @@
 			<!-- Form group Id in edit project from edit project (find) -->
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="idprojecteprj" class="control-label col-md-12">ID:</label>
+					<label for="idnprj" class="control-label col-md-12">ID:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="idprojecteprj" type="text" placeholder="01" readonly/>
+						<input class="form-control" id="idnprj" name="idnprj" type="text" placeholder="01" 
+						[(ngModel)]="subProject.idnprj"  #idnprj="ngModel" required readonly/>
 					</div>
 				</div>
 				<!-- Form group short name in edit project -->
 				<div class="form-group col-md-6">
-					<label for="idpgreprj" class="control-label col-md-12">ID proyecto Raíz:</label>
+					<label for="idgnrprj" class="control-label col-md-12">ID proyecto Raíz:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="idpgreprj" type="text" placeholder="010">
+						<input class="form-control" id="idgnrprj"  name="idgnrprj" type="text" placeholder="010"
+						[(ngModel)]="subProject.idgnrprj"  #idgnrprj="ngModel" required>
 					</div>
 				</div>
 			</div>
@@ -139,17 +201,42 @@
 			<div class="form-group row">
 				<div class="form-group col-md-6">
 					
-					<label for="shortnameeprj" class="control-label col-md-12">Nombre Corto:</label>
+					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortnameeprj" type="text" placeholder="PRJ01PRB">
+						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="PRJ01PRB"
+						[(ngModel)]="subProject.shortname"  #shortname="ngModel" required  maxlength="20" minlength="3">
+						
+						<div *ngIf="shortname.errors">
+							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+						<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+							</div>
+		
+						</div>
 					</div>
 				</div>
 				<!-- Form group description in edit project -->
 				<div class="form-group col-md-6">
 					
-					<label for="nameeprj" class="control-label col-md-12">Nombre:</label>
+					<label for="name" class="control-label col-md-12">Nombre:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="nameeprj" placeholder="Proyecto Prueba 1">
+						<input type="text" class="form-control" id="name" placeholder="Proyecto"
+						[(ngModel)]="subProject.name"  #name="ngModel" required  maxlength="20" minlength="3">
+						<div *ngIf="name.errors">
+							<div *ngIf="name.touched && !name.valid" class="alert alert-danger" >
+									
+									<strong>Warning!</strong>Campo requerido.
+										  
+						</div>
+						<div *ngIf="!name.validator.minlength && name.touched" class="alert alert-danger ">
+								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+							</div>
+		
+						</div>
 					</div>
 				</div>
 			</div>
@@ -158,17 +245,29 @@
 					<!-- Form group label in edit project -->
 					<div class = "form-group col-md-6">
 							
-							<label for="descriptioneprj" class="control-label col-md-12">Descripción:</label>
+							<label for="description" class="control-label col-md-12">Descripción:</label>
 							<div class="col-md-12">
-								<input type="text" class="form-control" id="descriptioneprj" placeholder="Proyecto para hacer pruebas">
+								<input type="text" class="form-control" id="description" placeholder="Proyecto"
+								[(ngModel)]="subProject.description"  #description="ngModel" required  maxlength="50" minlength="3">
+								<div *ngIf="description.errors">
+									<div *ngIf="description.touched && !description.valid" class="alert alert-danger" >
+											
+											<strong>Warning!</strong>Campo requerido.
+												  
+								</div>
+								<div *ngIf="!description.validator.minlength && description.touched" class="alert alert-danger ">
+										<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
+									</div>
+				
+								</div>
 							</div>
 					</div>
 					<div class="form-group col-md-6">
-							<label for="creationdateepj" class="control-label col-md-12">Fecha de Creación:</label>
+							<label for="creationdate" class="control-label col-md-12">Fecha de Creación:</label>
 							<div class="col-md-12">
 								<div class="input-group date">
-									<my-date-picker name="mydate" [options]="myDatePickerOptions"
-									[(ngModel)]="model" required></my-date-picker>
+									<my-date-picker name="creationdate" [options]="myDatePickerOptions"
+									[(ngModel)]="subProject.creationdate" required></my-date-picker>
 								</div>
 							</div>
 					</div>
@@ -176,32 +275,51 @@
 				</div>
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-						<label for="labeleprj" class="control-label  col-md-12">Etiqueta:</label>
+						<label for="idprjlabel" class="control-label  col-md-12">Etiqueta:</label>
 						<div class="col-md-12">
 								<div class="form-group">
 										
-									<select class="form-control text-center" id="exampleSelect2">
+									<select class="form-control text-center" id="idprjlabel" name="idprjlabel" 
+									[(ngModel)]="label.idprjlabel"  #idprjlabel="ngModel" required>
+									>
 										
 									  <option *ngFor = "let label of labels" [value] = "label.name">{{label.name}}</option>	
 	
 									 
 									</select>
+									<div *ngIf="name.errors">
+										<div *ngIf="idprjlabel.touched && !idprjlabel.valid" class="alert alert-danger" >
+												
+												<strong>Warning!</strong>Campo requerido.
+													  
+									</div>
+								
+									</div>
 										  </div>
 						</div>
 				
 				</div>
 				<!-- Form group author in edit project -->
 				<div class="form-group col-md-6">
-					<label for="authoreprj" class="control-label col-md-12">Autor:</label>
+					<label for="idnathor" class="control-label col-md-12">Autor:</label>
 					<div class="col-md-12">
 							<div class="form-group">
 									
-								<select  class="form-control text-center" id="exampleSelect2">
+								<select  class="form-control text-center" id="idnauthor" name="idnauthor"
+								[(ngModel)]="author.idnauthor"  #idnauthor="ngModel" required>
 									
 								  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
 
 								 
 								</select>
+								<div *ngIf="author.errors">
+									<div *ngIf="author.touched && !author.valid" class="alert alert-danger" >
+											
+											<strong>Warning!</strong>Campo requerido.
+												  
+								</div>
+								
+								</div>
 									  </div>
 					</div>
 				</div>
@@ -215,7 +333,10 @@
 				</div>
 				<div class="col-md-4">
 					
-				
+					<button class="btn btn-primary" >Documento</button>	
+					
+					<button class="btn btn-success" (click)="saveSubProject()" >Guardar</button>
+					<button class="btn btn-info" >Cancelar</button>
 				</div>
 			</div>
 		</div> <!-- div fomr pgr -->

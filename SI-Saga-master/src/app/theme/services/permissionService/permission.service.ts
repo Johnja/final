@@ -1,61 +1,43 @@
 import {Injectable} from '@angular/core';
+import { Permission } from './permission';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 
 export class PermissionService {
 
-permissionTablePageSize = 10;
-
-permissionTableData = [
-    {
-      id: '1',
-      name: 'Mark',
-      description: 'permission 1',
-   
-    },
     
-    {
-      id: '2',
-      name: 'Mark',
-      description: 'permission 2',
-    },
-    {
-      id: '3',
-      name: 'Mark',
-      description: 'permission 3',
-    },
-    {
-      id: '4',
-      
-      name: 'Mark',
-      description: 'permission 4',
-    },
-    
-    {
-      id: '5',
-      
-      name: 'Mark',
-      description: 'permision 5',
-    },
-    {
-      id: '6',
-      
-      name: 'Mark',
-      description: 'permission 6',
-    }, 
-    {
-      id: '7',
-      
-      name: 'Mark',
-      description: 'permission 7',
-    },
-  
-  ];
+  private url = 'http://localhost:8080/permission/findall';
+  private headers = new Headers({ 'Content-Type': 'application/json' });
 
- 
-
-  constructor() {
+  constructor(private http: Http) {
     
   }
+
+  getPermission(): Observable<Permission[]>{  
+    let url = `${this.url}`;
+     return this.http.get(url)
+     .map(r => r.json())
+     .catch(this.handleError);
+    }
+    
+    private handleError(error:Response | any){
+    
+    let errMsg: string;
+    if(error instanceof Response){
+    let body = error.json() || '';
+    let err =  body.error || JSON.stringify(body);
+    errMsg = `${error.status} - ${error.statusText || '' } ${err}`;
+    
+    }else{
+    
+      errMsg= error.message ? error.message : error.toString();
+    }
+    return Observable.throw(errMsg);
+    }
 
 }

@@ -10,7 +10,8 @@
 					<div class="form-group col-md-6">
 						<label for="idgnrprj" class="control-label col-md-12">ID Proyecto Raíz:</label>
 						<div class="col-md-12">
-							<input class="form-control" id="idgnrprj" name="idgnrprj" type="text" placeholder="ID Proyecto Raíz" [(ngModel)]="subProject.idgnrprj"  #idgnrprj="ngModel" required>
+							<input class="form-control" id="idgnrprj" name="idgnrprj" type="text" placeholder="ID Proyecto Raíz" 
+							[(ngModel)]="subProject.idgnrprj"  #idgnrprj="ngModel" required>
 							
 						</div>
 					</div>
@@ -19,7 +20,8 @@
 				<div class="form-group col-md-6">
 					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" [(ngModel)]="subProject.shortname"  #shortname="ngModel" required  maxlength="20" minlength="3">
+						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" 
+						[(ngModel)]="subProject.shortname"  #shortname="ngModel" required  maxlength="20" minlength="3">
 						<div *ngIf="shortname.errors">
 								<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger" >
 										
@@ -39,7 +41,8 @@
 				<div class="form-group col-md-6">
 					<label for="name" class="control-label col-md-12">Nombre:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" [(ngModel)]="subProject.name"  #name="ngModel" required  maxlength="20" minlength="3">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" 
+						[(ngModel)]="subProject.name"  #name="ngModel" required  maxlength="20" minlength="3">
 						<div *ngIf="name.errors">
 								<div *ngIf="name.touched && !name.valid" class="alert alert-danger" >
 										
@@ -57,8 +60,9 @@
 				<div class="form-group col-md-6">
 					<label for="description" class="control-label col-md-12">Descripción:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="description" name="description" placeholder="Descripción" [(ngModel)]="subProject.description"  #description="ngModel" required  maxlength="50" minlength="3">
-						<div *ngIf="name.errors">
+						<input type="text" class="form-control" id="description" name="description" placeholder="Descripción" 
+						[(ngModel)]="subProject.description"  #description="ngModel" required  maxlength="50" minlength="3">
+						<div *ngIf="description.errors">
 								<div *ngIf="description.touched && !description.valid" class="alert alert-danger" >
 										
 										<strong>Warning!</strong>Campo requerido.
@@ -80,7 +84,8 @@
 						<div class="col-md-12">
 								<div class="form-group">
 										
-									<select class="form-control"  id="idprjlabel" name="idprjlabel" [(ngModel)]="label.idprjlabel"  #idprjlabel="ngModel" required>
+									<select class="form-control"  id="idprjlabel" name="idprjlabel" 
+									[(ngModel)]="label.idprjlabel"  #idprjlabel="ngModel" required>
 										
 									  <option *ngFor = "let label of labels" [value] = "label.name">{{label.name}}</option>	
 	
@@ -103,7 +108,8 @@
 					<div class="col-md-12">
 							<div class="form-group">
 									
-								<select class="form-control" id="author" name="author" [(ngModel)]="author.idnauthor"  #idnauthor="ngModel" required>
+								<select class="form-control" id="author" name="author" 
+								[(ngModel)]="author.idnauthor"  #idnauthor="ngModel" required>
 									
 								  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
 
@@ -115,9 +121,7 @@
 												<strong>Warning!</strong>Campo requerido.
 													  
 									</div>
-									<div *ngIf="!author.validator.minlength && author.touched" class="alert alert-danger ">
-											<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
-										</div>
+								
 					
 									</div>
 								  </div>
