@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Rx';
 import { Authors } from '../../../../theme/services/authorsService/authors';
 import { TypeProjects } from '../../../../theme/services/typeProjectsService/typeprojects';
 import { Labels } from '../../../../theme/services/labelsService/labels';
-
+import { Permission} from '../../../../theme/services/permissionService/permission';
 
 
 @Component({
@@ -24,41 +24,58 @@ export class ConfigurationSaga {
   typeProjects: TypeProjects[];
   labels: Labels[];
   msgError: string;
+  permission: Permission = new Permission ();
   
-  
+permissions: Permission[];
+ 
 
-  permissionTableData:Array<any>;
-
-  constructor(private _viewAuthorsService : ViewAuthorsService, private _typeProjectsService : TypeProjectsService, private _labelsService : LabelsService, private _roleService : RoleService, private _permissionService : PermissionService ) {
+  constructor(private _viewAuthorsService : ViewAuthorsService, 
+    private _typeProjectsService : TypeProjectsService, 
+    private _labelsService : LabelsService, 
+    private _roleService : RoleService, 
+    private _permissionService : PermissionService ) {
    
   this.loadRoles();  
   this.loadAuthors(); 
   this.loadTypeProjects();   
   this.loadLabels();  
+  this.loadPermissions();
   
-    this.permissionTableData = _permissionService.permissionTableData;
+    
     }
 
     loadRoles(){
 
 
-this._roleService.getRole().subscribe(roles =>this.roles = roles, error => this.msgError = <any>error);
+this._roleService.getRole()
+.subscribe(roles => this.roles = roles, error => this.msgError = <any>error);
     }
+
+    loadPermissions(){
+      
+      
+      this._permissionService.getPermission()
+      .subscribe(permissions => this.permissions = permissions, error => this.msgError = <any>error);
+          }
 
     loadAuthors(){
 
-      this._viewAuthorsService.getAuthors().subscribe(authors =>this.authors = authors, error => this.msgError = <any>error);
+      this._viewAuthorsService
+      .getAuthors().subscribe(authors => this.authors = authors, error => this.msgError = <any>error);
     }
 
     loadTypeProjects(){
       
-            this._typeProjectsService.getTypeProjects().subscribe(typeProjects =>this.typeProjects = typeProjects, error => this.msgError = <any>error);
+            this._typeProjectsService
+            .getTypeProjects().subscribe(typeProjects => this.typeProjects = typeProjects, 
+              error => this.msgError = <any>error);
           }
 
           loadLabels(){
             
             
-            this._labelsService.getLabels().subscribe(labels =>this.labels = labels, error => this.msgError = <any>error);
+            this._labelsService.getLabels()
+            .subscribe(labels => this.labels = labels, error => this.msgError = <any>error);
                 }
     
 }
