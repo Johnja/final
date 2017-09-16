@@ -1,10 +1,8 @@
 import { Routes, RouterModule }  from '@angular/router';
-
 import { Users } from './users.component';
 import { Edituser } from './components/edituser/edituser.component';
 import { Newuser } from './components/newuser/newuser.component';
 import { ViewUsers } from './components/viewusers/viewusers.component';
-
 
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [

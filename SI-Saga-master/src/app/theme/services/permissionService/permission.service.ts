@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Permission } from './permission';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -10,7 +10,6 @@ import 'rxjs/add/operator/catch';
 
 export class PermissionService {
 
-    
   private url = 'http://localhost:8080/permission/findall';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 

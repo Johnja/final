@@ -1,72 +1,67 @@
-import {Component} from '@angular/core';
-import {RoleService} from '../../../../theme/services/roleService/role.service';
-import {Role} from '../../../../theme/services/roleService/role';
+import { Component } from '@angular/core';
+import { RoleService } from '../../../../theme/services/roleService/role.service';
+import { Role } from '../../../../theme/services/roleService/role';
 import { Observable } from 'rxjs/Rx';
-
-import {Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {ViewUsersService} from '../../../../theme/services/viewUsersService/viewusers.service';
-import {Users} from '../../../../theme/services/viewUsersService/users';
+import { ViewUsersService } from '../../../../theme/services/viewUsersService/viewusers.service';
+import { Users } from '../../../../theme/services/viewUsersService/users';
+import { Location } from '@angular/common';
+import 'rxjs/add/operator/switchMap';
+
 @Component({
   selector: 'newuser',
   styleUrls: ['./newuser.scss'],
   templateUrl: './newuser.html',
 })
+
 export class Newuser {
-//isEdit = false;
- 
-user: Users = new Users();
-submitted = false;
+
+  user: Users = new Users();
+  submitted = false;
   roles: Role[];
   msgError: string;
+  role: Role = new Role();
 
   constructor(
-    private _roleService: RoleService, 
+    private _roleService: RoleService,
     private _viewUsersService: ViewUsersService,
-    private route: ActivatedRoute, 
-    private router: Router ) {
+    private route: ActivatedRoute,
+    private router: Router) {
 
-    
     this.loadRoles();
- 
-}
-ngOnitInit(){
-  let id = this.route.snapshot.params['id'];
-  if (!id) return;
-  
-  console.log(id);
-  
+  }
+
+  ngOnitInit() {
+    let id = this.route.snapshot.params['id'];
+    if (!id) return;
+    console.log(id);
   }
 
 
-goLista(){
+  resetForm() {
+    this.user.idnuser = null;
+    this.user.name = '';
+    this.user.lastname = '';
+    this.user.nameuser = '';
+    this.user.email = '';
+  }
 
-let link = [];
-this.router.navigate(link);
+  saveUser() {
 
-}
-
-  saveUser(){
-   
     this._viewUsersService.addUser(this.user)
-    .subscribe(
+      .subscribe(
       rt => console.log(rt),
       er => console.log(er),
-      () => console.log('Terminado') 
-     
+      () => console.log('Terminado')
 
-    );
-    
-    
-    }
+      );
+  }
 
 
+  loadRoles() {
 
-
-loadRoles(){
-  
-  
-  this._roleService.getRole().subscribe(roles =>this.roles = roles, error => this.msgError = <any>error);
-      }
+    this._roleService.getRole().subscribe(roles => this.roles = roles, error => this.msgError = <any>error);
+  }
 
 }

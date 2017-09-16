@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
 
@@ -18,8 +17,7 @@ import { PAGES_MENU } from './pages.menu';
     <footer class="al-footer clearfix">
       <div class="al-footer-right" translate>Creado por Enlared.co <i class="ion-heart"></i></div>
       <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; <a href="http://novaventa.com.co" translate target="blank">Novaventa</a> 2017</div>
-     
+        <div class="al-copy">&copy; <a href="http://novaventa.com.co" translate target="blank">Novaventa</a> 2017</div>    
       </div>
     </footer>
     <ba-back-top position="200"></ba-back-top>

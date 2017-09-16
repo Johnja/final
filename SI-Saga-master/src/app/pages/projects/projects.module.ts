@@ -3,7 +3,7 @@ import { CommonModule }  from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import { routing }       from './projects.routing';
+import { routing } from './projects.routing';
 import { Projects } from './projects.component';
 import { Subproject } from './components/subproject/subproject.component';
 import { Viewprojects } from './components/viewprojects/viewprojects.component';
@@ -31,6 +31,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     HttpModule,
     routing,
     MyDatePickerModule,
+ 
     
   ],
   declarations: [

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SubProject } from './subproject';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -14,51 +14,48 @@ export class ViewSubProjectsService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   private subproject: SubProject = new SubProject();
- 
 
   constructor(private http: Http) {
-    
-  
+
   }
 
-  getSubProjects(): Observable<SubProject[]>{  
+  getSubProjects(): Observable<SubProject[]> {
     let url = `${this.url}/findall`;
-     return this.http.get(url)
-     .map(r => r.json())
-     .catch(this.handleError);
-    }
-
-    addSubProject(subproject: SubProject){
-      let url  = `${this.url}/save`;
-      let iJson = JSON.stringify(subproject);
-      return this.http.post(url, iJson, {headers: this.headers})
+    return this.http.get(url)
       .map(r => r.json())
       .catch(this.handleError);
-          }
+  }
 
-          putSubProject(subproject: SubProject){
-            
-let url  = `${this.url}/edit/${subproject.idnprj}`;
-let iJson = JSON.stringify(subproject);
-return this.http.put(url,iJson,{headers: this.headers})
-.map(r => r.json())
-.catch(this.handleError);
-          }
-          
-          
-    private handleError(error:Response | any){
-    
+  addSubProject(subproject: SubProject) {
+    let url = `${this.url}/save`;
+    let iJson = JSON.stringify(subproject);
+    return this.http.post(url, iJson, { headers: this.headers })
+      .map(r => r.json())
+      .catch(this.handleError);
+  }
+
+  putSubProject(subproject: SubProject) {
+
+    let url = `${this.url}/edit/${subproject.tb_gn_project_shortname}`;
+    let iJson = JSON.stringify(subproject);
+    return this.http.put(url, iJson, { headers: this.headers })
+      .map(r => r.json())
+      .catch(this.handleError);
+  }
+
+  private handleError(error: Response | any) {
+
     let errMsg: string;
-    if(error instanceof Response){
-    let body = error.json() || '';
-    let err =  body.error || JSON.stringify(body);
-    errMsg = `${error.status} - ${error.statusText || '' } ${err}`;
-    
-    }else{
-    
-      errMsg= error.message ? error.message : error.toString();
+    if (error instanceof Response) {
+      let body = error.json() || '';
+      let err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+
+    } else {
+
+      errMsg = error.message ? error.message : error.toString();
     }
     return Observable.throw(errMsg);
-    }
+  }
 
 }

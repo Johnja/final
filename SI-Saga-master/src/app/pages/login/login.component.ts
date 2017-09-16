@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 
 @Component({
@@ -11,13 +11,13 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class Login {
 
- private form:FormGroup;
- private email:AbstractControl;
- private password:AbstractControl;
- private submitted:boolean = false;
- //private location;
- constructor(fb:FormBuilder,private  router:Router) {
-   this.form = fb.group({
+  private form: FormGroup;
+  private email: AbstractControl;
+  private password: AbstractControl;
+  private submitted: boolean = false;
+  //private location;
+  constructor(fb: FormBuilder, private router: Router) {
+    this.form = fb.group({ 
       'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
@@ -26,25 +26,22 @@ export class Login {
     this.password = this.form.controls['password'];
   }
 
-
-
-  private onSubmit(values:Object):void {
+  private onSubmit(values: Object): void {
     this.submitted = true;
-    
-    
-     if (this.form.valid) {
+
+    if (this.form.valid) {
       // your code goes here
-      
-      if(this.email.value === "admin@admin.co" && this.password.value === "123456"){
+
+      if (this.email.value === "admin@admin.co" && this.password.value === "123456") {
         console.log(this.email, this.password);
         window.location.replace('#/pages/dashboard');
-      }else{
-      
-       alert('Error, ingrese nuevamente sus datos');
-}
-      }
-    
+      } else {
 
+        alert('Error, ingrese nuevamente sus datos');
+      }
     }
+
+
   }
+}
 

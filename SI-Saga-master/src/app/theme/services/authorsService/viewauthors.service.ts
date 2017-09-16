@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/catch';
 
-
 @Injectable()
 
 export class ViewAuthorsService { 
@@ -21,7 +20,7 @@ export class ViewAuthorsService {
   getAuthors(): Observable<Authors[]>{  
     let url = `${this.url}`;
      return this.http.get(url)
-     .map(r => r.json())
+      .map(r => r.json())
      .catch(this.handleError);
     }
     
@@ -39,6 +38,5 @@ export class ViewAuthorsService {
     }
     return Observable.throw(errMsg);
     }
-
 
 }

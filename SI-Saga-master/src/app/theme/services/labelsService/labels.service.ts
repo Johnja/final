@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Labels } from './labels';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -38,8 +38,5 @@ export class LabelsService {
     }
     return Observable.throw(errMsg);
     }
-
-
-
 
 }

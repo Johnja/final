@@ -20,11 +20,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      
-      
-     
       { path: 'projects', loadChildren: './projects/projects.module#ProjectsModule' },
-      
       { path: 'documents', loadChildren: './documents/documents.module#DocumentsModule' },
       { path: 'users', loadChildren: './users/users.module#UsersModule' },
       { path: 'configurationsaga', loadChildren: './configuration/configuration.module#ConfigurationModule'},

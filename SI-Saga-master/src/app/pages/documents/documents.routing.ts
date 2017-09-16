@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+  import { Routes, RouterModule } from '@angular/router';
 
 import { Documents } from './documents.component';
 import { Newdocument } from './components/newdocument/newdocument.component';

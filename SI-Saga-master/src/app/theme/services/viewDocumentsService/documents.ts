@@ -4,7 +4,7 @@ export class Documents {
     shortname: string;
     name: string;
     description: string;
-    creationdate: string;
-    idnprj: number;
+    creationdate: any;
+    tb_prj_projects_shortname: number;
     file: string;
     }

@@ -1,19 +1,18 @@
 <ba-card cardTitle="Bienvenido al sistema SI-SAGA" baCardClass="with-scroll">
-	<form class="form-horizontal" >
+	<form class="form-horizontal">
 		<div class="container-fluid">
-			<!-- Table form view projects -->
 			<div class="form-group row">
 				<h4>Buscar proyectos o subproyectos para listar </h4>
 			</div>
-		<div class = "form-group row">
-				<div class="btn-group"  >
-			<button class="btn btn-primary" (click)="showForm = 1" ng-click="formToggle()">Proyecto</button>
-			<button class="btn btn-primary" (click)="showForm = 2" ng-click="formToggle()">Subproyecto</button>
+			<div class="form-group row">
+				<div class="btn-group">
+					<button class="btn btn-primary" (click)="showForm = 1" ng-click="formToggle()">Proyecto</button>
+					<button class="btn btn-primary" (click)="showForm = 2" ng-click="formToggle()">Subproyecto</button>
 				</div>
-		</div>
+			</div>
 			<div class="box-shadow-border"></div>
 			<br>
-			<div class = "form-project" *ngIf = "showForm == 1">
+			<div class="form-project" *ngIf="showForm == 1">
 				<!--
 				<div class="form-group row">
 							<h4>Proyectos </h4>
@@ -93,67 +92,94 @@
 				<!-- Table responsive whit data -->
 				<div class="form-group row">
 					<div class="form-group col-md-6">
-				<div class="table-responsive">
-					
-					<table class="table table-striped table-bordered table-hover table-condensed text-center ">
-						<thead >
-						<tr class="success">
-							
-								<th class = "text-center"><h5>Nombre Corto</h5></th>
-								<th class = "text-center"><h5>Nombre</h5></th>
-								<th class = "text-center"><h5>Descripción</h5></th>
-								<th class = "text-center"><h5>Fecha Creación</h5></th>
-								
-								<th class = "text-center"><h5>Autor</h5></th>
-								<th class = "text-center"><h5>Tipo Proyecto</h5></th>
-								<th class = "text-center"><h5>Editar</h5></th>																		
-								<th class = "text-center"><h5>Eliminar</h5></th>
-						
-						</tr>
-						</thead>
-						<tbody>
-						<tr *ngFor = "let project of projects">
-								<td>{{project.shortname}}</td>
-								<td>{{project.name}}</td>
-								<td>{{project.description}}</td>
-								<td>{{project.creationdate}}</td>
-								<td></td>
-								<td></td>
-								<td>
-										<button class = "btn btn-primary" ng-click = "editInfo(detail)" title = "Edit"><span class = "ion ion-edit"></span></button>
-								</td>
-								<td><button class = "btn btn-danger" ng-click = "editInfo(detail)" title = "Delete"><span class = "ion ion-trash-a"></span></button></td>
-						</tr>
-						</tbody>
-						<tfoot>
-				
-				</tfoot>
-				</table>
-				</div>
-			</div>
-			<div class="form-group col-md-6">
-					<div class="table-responsive">
-						
+						<div class="table-responsive">
 							<table class="table table-striped table-bordered table-hover table-condensed text-center ">
-								<thead >
-								<tr class="success">
-										
-										<th class = "text-center"><h5>Proyecto Raíz</h5></th>
-										<th class = "text-center"><h5>Nombre Corto</h5></th>
-										<th class = "text-center"><h5>Nombre</h5></th>
-										<th class = "text-center"><h5>Descripción</h5></th>
-										<th class = "text-center"><h5>Fecha Creación</h5></th>
-										<th class = "text-center"><h5>Etiquetas</h5></th>
-										<th class = "text-center"><h5>Autor</h5></th>
-										<th class = "text-center"><h5>Documento</h5></th>
-										<th class = "text-center"><h5>Editar</h5></th>																		
-										<th class = "text-center"><h5>Eliminar</h5></th>
-								
-								</tr>
+								<thead>
+									<tr class="success">
+										<th class="text-center">
+											<h5>Nombre Corto</h5>
+										</th>
+										<th class="text-center">
+											<h5>Nombre</h5>
+										</th>
+										<th class="text-center">
+											<h5>Descripción</h5>
+										</th>
+										<th class="text-center">
+											<h5>Fecha Creación</h5>
+										</th>
+										<th class="text-center">
+											<h5>Autor</h5>
+										</th>
+										<th class="text-center">
+											<h5>Tipo Proyecto</h5>
+										</th>
+										<th class="text-center">
+											<h5>Editar</h5>
+										</th>
+										<th class="text-center">
+											<h5>Eliminar</h5>
+										</th>
+									</tr>
 								</thead>
 								<tbody>
-								<tr *ngFor = "let subProject of subProject">
-										
+									<tr *ngFor="let project of projects">
+										<td>{{project.shortname}}</td>
+										<td>{{project.name}}</td>
+										<td>{{project.description}}</td>
+										<td>{{project.creationdate}}</td>
+										<td></td>
+										<td></td>
+										<td>
+											<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
+										</td>
+										<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
+									</tr>
+								</tbody>
+								<tfoot>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered table-hover table-condensed text-center ">
+								<thead>
+									<tr class="success">
+										<th class="text-center">
+											<h5>Proyecto Raíz</h5>
+										</th>
+										<th class="text-center">
+											<h5>Nombre Corto</h5>
+										</th>
+										<th class="text-center">
+											<h5>Nombre</h5>
+										</th>
+										<th class="text-center">
+											<h5>Descripción</h5>
+										</th>
+										<th class="text-center">
+											<h5>Fecha Creación</h5>
+										</th>
+										<th class="text-center">
+											<h5>Etiquetas</h5>
+										</th>
+										<th class="text-center">
+											<h5>Autor</h5>
+										</th>
+										<th class="text-center">
+											<h5>Documento</h5>
+										</th>
+										<th class="text-center">
+											<h5>Editar</h5>
+										</th>
+										<th class="text-center">
+											<h5>Eliminar</h5>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let subProject of subProject">
 										<td>{{subProject.idgnrprj}}</td>
 										<td>{{subProject.shortname}}</td>
 										<td>{{subProject.name}}</td>
@@ -162,24 +188,23 @@
 										<td></td>
 										<td></td>
 										<td>
-											<button class = "btn btn-primary" ng-click = "editInfo(detail)" title = "Edit"><span class = "ion ion-document-text"></span></button>
-									</td>
-										<td>
-												<button class = "btn btn-success" ng-click = "editInfo(detail)" title = "Edit"><span class = "ion ion-edit"></span></button>
+											<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-document-text"></span></button>
 										</td>
-										<td><button class = "btn btn-danger" ng-click = "editInfo(detail)" title = "Delete"><span class = "ion ion-trash-a"></span></button></td>
-								</tr>
+										<td>
+											<button class="btn btn-success" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
+										</td>
+										<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
+									</tr>
 								</tbody>
 								<tfoot>
-						
-						</tfoot>
-						</table>
+								</tfoot>
+							</table>
 						</div>
+					</div>
+				</div>
 			</div>
-			</div>
-			</div>
-<div class = "form-project-sp" *ngIf = "showForm == 2">
-	<!--
+			<div class="form-project-sp" *ngIf="showForm == 2">
+				<!--
 					<div class="form-group row">
 							<h4>SubProyectos </h4>
 						</div>
@@ -258,55 +283,68 @@
 				-->
 				<!-- Table responsive whit data -->
 				<div class="form-group row">
-			
-			<div class="form-group col-md-12">
-					<div class="table-responsive">
-						
+					<div class="form-group col-md-12">
+						<div class="table-responsive">
 							<table class="table table-striped table-bordered table-hover table-condensed text-center ">
-								<thead >
-								<tr class="success">
-										<th class = "text-center"><h5>Proyecto Raíz</h5></th>
-										<th class = "text-center"><h5>Nombre Corto</h5></th>
-										<th class = "text-center"><h5>Nombre</h5></th>
-										<th class = "text-center"><h5>Descripción</h5></th>
-										<th class = "text-center"><h5>Fecha Creación</h5></th>
-										<th class = "text-center"><h5>Etiquetas</h5></th>
-										<th class = "text-center"><h5>Autor</h5></th>
-										<th class = "text-center"><h5>Documento</h5></th>
-										<th class = "text-center"><h5>Editar</h5></th>																		
-										<th class = "text-center"><h5>Eliminar</h5></th>
-								
-								</tr>
+								<thead>
+									<tr class="success">
+										<th class="text-center">
+											<h5>Proyecto Raíz</h5>
+										</th>
+										<th class="text-center">
+											<h5>Nombre Corto</h5>
+										</th>
+										<th class="text-center">
+											<h5>Nombre</h5>
+										</th>
+										<th class="text-center">
+											<h5>Descripción</h5>
+										</th>
+										<th class="text-center">
+											<h5>Fecha Creación</h5>
+										</th>
+										<th class="text-center">
+											<h5>Etiquetas</h5>
+										</th>
+										<th class="text-center">
+											<h5>Autor</h5>
+										</th>
+										<th class="text-center">
+											<h5>Documento</h5>
+										</th>
+										<th class="text-center">
+											<h5>Editar</h5>
+										</th>
+										<th class="text-center">
+											<h5>Eliminar</h5>
+										</th>
+									</tr>
 								</thead>
 								<tbody>
-								<tr *ngFor = "let subproject of subProject">
+									<tr *ngFor="let subproject of subProject">
 										<td>{{subproject.idgnrprj}}</td>
 										<td>{{subproject.shortname}}</td>
 										<td>{{subproject.name}}</td>
-										
 										<td>{{subproject.description}}</td>
 										<td>{{subproject.creationdate}}</td>
 										<td></td>
 										<td></td>
 										<td>
-											<button class = "btn btn-primary" ng-click = "editInfo(detail)" title = "Edit"><span class = "ion ion-document-text"></span></button>
-									</td>
-										<td>
-												<button class = "btn btn-success" ng-click = "editInfo(detail)" title = "Edit"><span class = "ion ion-edit"></span></button>
+											<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-document-text"></span></button>
 										</td>
-										<td><button class = "btn btn-danger" ng-click = "editInfo(detail)" title = "Delete"><span class = "ion ion-trash-a"></span></button></td>
-								</tr>
+										<td>
+											<button class="btn btn-success" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
+										</td>
+										<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
+									</tr>
 								</tbody>
 								<tfoot>
-						
-						</tfoot>
-						</table>
+								</tfoot>
+							</table>
 						</div>
+					</div>
+				</div>
 			</div>
-			</div>
-			</div>
-
-		 <!-- Div de wrapper -->
-	</div>
+		</div>
 	</form>
 </ba-card>
