@@ -1,8 +1,8 @@
 export class SubProject {
     
-tb_gn_project_shortname: string;
+shortnamegnp: string;
 idnprj: number;
-shortname: string;
+shortnamespr: string;
 name: string;
 description: string;
 creationdate: any;

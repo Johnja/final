@@ -81,7 +81,7 @@ export class Editproject {
   resetFormProject() {
     this.project.idgnrprj = null;
     this.project.name = '';
-    this.project.shortname = '';
+    this.project.shortnamegnp = '';
     this.project.description = '';
     this.project.creationdate = '';
     this.typeProject.idnprjtype = null;
@@ -91,10 +91,10 @@ export class Editproject {
   }
 
   resetFormSubProject() {
-    this.subProject.tb_gn_project_shortname = null;
+    this.subProject.shortnamegnp = null;
     this.subProject.idnprj = null;
     this.subProject.name = '';
-    this.subProject.shortname = '';
+    this.subProject.shortnamespr = '';
     this.subProject.description = '';
     this.subProject.creationdate = '';
     this.author.idnauthor = null;
@@ -126,7 +126,7 @@ export class Editproject {
 
   updateSubProject() {
     //  if (!this.project) return;
-    this._viewProjectsService.putProject(this.project)
+    this._viewSubProjectsService.putSubProject(this.subProject)
       .subscribe(
       rt => console.log(rt),
       er => console.log(er),

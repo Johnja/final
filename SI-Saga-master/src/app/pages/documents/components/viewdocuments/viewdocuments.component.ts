@@ -19,14 +19,29 @@ export class Viewdocuments {
 
   documents: Documents[];
   msgError: string;
+  filterQuery = "" ;
+  rowsOnPage = 10;
+  sortBy = 'shortnamegnr';
+  sortOrder = 'asc';
 
   constructor(private _viewDocumentsService: ViewDocumentsService) {
 
     this.loadDocuments();
   }
 
+  
+  toInt(num: string) {
+    return +num;
+}
+
+sortByWordLength = (a: any) => {
+    return a.shortnamegnr.length;
+}
+
+
   loadDocuments() {
 
-    this._viewDocumentsService.getDocuments().subscribe(documents => this.documents = documents, error => this.msgError = <any>error);
+    this._viewDocumentsService.getDocuments()
+    .subscribe(documents => this.documents = documents, error => this.msgError = <any>error);
   }
 }

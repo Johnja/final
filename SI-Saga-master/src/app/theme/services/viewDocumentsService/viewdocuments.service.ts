@@ -36,7 +36,7 @@ export class ViewDocumentsService {
 
   putDocument(document: Documents) {
 
-    let url = `${this.url}/edit/${document.shortname}`;
+    let url = `${this.url}/edit/${document.shortnameDOC}`;
     let iJson = JSON.stringify(document);
     return this.http.put(url, iJson, { headers: this.headers })
       .map(r => r.json())

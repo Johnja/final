@@ -36,7 +36,7 @@ export class ViewSubProjectsService {
 
   putSubProject(subproject: SubProject) {
 
-    let url = `${this.url}/edit/${subproject.tb_gn_project_shortname}`;
+    let url = `${this.url}/edit/${subproject.shortnamespr}`;
     let iJson = JSON.stringify(subproject);
     return this.http.put(url, iJson, { headers: this.headers })
       .map(r => r.json())
@@ -56,6 +56,14 @@ export class ViewSubProjectsService {
       errMsg = error.message ? error.message : error.toString();
     }
     return Observable.throw(errMsg);
+  }
+
+  getData(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.getSubProjects());
+      }, 2000);
+    });
   }
 
 }

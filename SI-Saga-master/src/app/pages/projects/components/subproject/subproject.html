@@ -6,32 +6,32 @@
 			</div>
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="tb_gn_project_shortname" class="control-label col-md-12">Shortname Projecto Raíz:</label>
+					<label for="shortnamegnp" class="control-label col-md-12">Shortname Projecto Raíz:</label>
 					<div class="col-md-12">	
-						<input class="form-control" id="tb_gn_project_shortname" name="tb_gn_project_shortname" type="text" placeholder="Shortname Proyecto Raíz" 
-						[(ngModel)]="subProject.tb_gn_project_shortname"
-						 #tb_gn_project_shortname="ngModel" required maxlength="10" minlength="3">
-						<div *ngIf="tb_gn_project_shortname.errors">
-							<div *ngIf="tb_gn_project_shortname.touched && !tb_gn_project_shortname.valid" class="alert alert-danger">
+						<input class="form-control" id="shortnamegnp" name="shortnamegnp" type="text" placeholder="Shortname Proyecto Raíz" 
+						[(ngModel)]="subProject.shortnamegnp"
+						 #shortnamegnp="ngModel" required maxlength="10" minlength="3">
+						<div *ngIf="shortnamegnp.errors">
+							<div *ngIf="shortnamegnp.touched && !shortnamegnp.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 						</div>
-						<div *ngIf="!tb_gn_project_shortname.validator.minlength && tb_gn_project_shortname.touched" class="alert alert-danger ">
+						<div *ngIf="!shortnamegnp.validator.minlength && shortnamegnp.touched" class="alert alert-danger ">
 								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
 						</div>
 						</div>
-					</div>
+						</div>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
+					<label for="shortnamespr" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" 
-						[(ngModel)]="subProject.shortname"
-						 #shortname="ngModel" required maxlength="10" minlength="3">
-						<div *ngIf="shortname.errors">
-							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger">
+						<input class="form-control" id="shortnamespr" name="shortnamespr" type="text" placeholder="Nombre Corto" 
+						[(ngModel)]="subProject.shortnamespr"
+						 #shortnamespr="ngModel" required maxlength="10" minlength="3">
+						<div *ngIf="shortnamespr.errors">
+							<div *ngIf="shortnamespr.touched && !shortnamespr.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 							</div>
-							<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+							<div *ngIf="!shortnamespr.validator.minlength && shortnamespr.touched" class="alert alert-danger ">
 								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
 							</div>
 						</div>
@@ -125,13 +125,13 @@
 				<div class="col-md-4">
 				</div>
 				<div class="col-md-4">
-					<div *ngIf="tb_gn_project_shortname.errors || shortname.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idprjlabel.errors">
+					<div *ngIf="shortnamespr.errors || shortnamegnp.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idprjlabel.errors">
 						<button class="btn btn-primary" name="buttonSave" (click)="goDocument()" disabled>Documento</button>
 						<button class="btn btn-success" (click)="saveSubProject()" disabled="">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
 					</div>
 
-					<div *ngIf="!tb_gn_project_shortname.errors && !shortname.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idprjlabel.errors">
+					<div *ngIf="!shortnamespr.errors && !shortnamegnp.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idprjlabel.errors">
 						<button class="btn btn-primary" name="buttonSave" (click)="goDocument()">Documento</button>
 						<button class="btn btn-success" (click)="saveSubProject()">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>

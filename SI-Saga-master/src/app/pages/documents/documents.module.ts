@@ -11,8 +11,17 @@ import { Viewdocuments } from './components/viewdocuments/viewdocuments.componen
 import { Editdocument } from './components/editdocument/editdocument.component';
 import { DefaultModalsDocuments } from '../../theme/components/modals/documents/defaultmodalsdocuments/defaultmodalsdocuments.component';
 import { ViewDocumentsService} from '../../theme/services/viewDocumentsService/viewdocuments.service';
-import { HttpModule } from "@angular/http";
+import { HttpModule } from '@angular/http';
 import { MyDatePickerModule } from 'mydatepicker';
+
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { DataTableModule } from 'angular2-datatable';
+import { DataFilterPipe } from './data-filter.pipe';
+import { HotTable, HotTableModule } from 'ng2-handsontable';
+
+import { DataTables } from './components/dataTables/dataTables.component';
+import { DataTablesService } from './components/dataTables/dataTables.service';
+
 
 
 @NgModule({
@@ -25,6 +34,9 @@ import { MyDatePickerModule } from 'mydatepicker';
     routing,
     HttpModule,
     MyDatePickerModule,
+    Ng2SmartTableModule,
+    DataTableModule,
+    
     
   ],
   declarations: [
@@ -34,14 +46,16 @@ import { MyDatePickerModule } from 'mydatepicker';
     Editdocument,
     ModalsDocuments,
     DefaultModalsDocuments,
-  
+    DataFilterPipe, 
    
   ],
    entryComponents: [
-   DefaultModalsDocuments
+   DefaultModalsDocuments,
+ 
   ],
   providers: [
-    ViewDocumentsService
+    ViewDocumentsService,
+
   ]
 })
 export class DocumentsModule {

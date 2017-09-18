@@ -6,16 +6,16 @@
 			</div>
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
+					<label for="shortnamegnp" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" 
-						[(ngModel)]="project.shortname"
-						 #shortname="ngModel" required maxlength="10" minlength="3">
-						<div *ngIf="shortname.errors">
-							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger">
+						<input class="form-control" id="shortnamegnp" name="shortnamegnp" type="text" placeholder="Nombre Corto" 
+						[(ngModel)]="project.shortnamegnp"
+						 #shortnamegnp="ngModel" required maxlength="10" minlength="3">
+						<div *ngIf="shortnamegnp.errors">
+							<div *ngIf="shortnamegnp.touched && !shortnamegnp.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 							</div>
-							<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+							<div *ngIf="!shortnamegnp.validator.minlength && shortnamegnp.touched" class="alert alert-danger ">
 								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
 							</div>
 						</div>
@@ -111,12 +111,12 @@
 				<div class="col-md-4">
 				</div>
 				<div class="col-md-4">
-					<div *ngIf="shortname.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idnprjtype.errors">
+					<div *ngIf="shortnamegnp.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idnprjtype.errors">
 						<button class="btn btn-primary" name="buttonSave" (click)="goSubProject()" disabled>SubProyecto	</button>
 						<button class="btn btn-success" (click)="saveProject()" disabled="">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
 					</div>
-					<div *ngIf="!shortname.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idnprjtype.errors">
+					<div *ngIf="!shortnamegnp.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idnprjtype.errors">
 						<button class="btn btn-primary" name="buttonSave" (click)="goSubProject()">SubProyecto	</button>
 						<button class="btn btn-success" (click)="saveProject()">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>

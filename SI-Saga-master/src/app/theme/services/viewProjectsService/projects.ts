@@ -2,7 +2,7 @@ export class Projects {
 
 idgnrprj: number;
 name: string;
-shortname: string;
+shortnamegnp: string;
 description: string;
 creationdate: any;
 }

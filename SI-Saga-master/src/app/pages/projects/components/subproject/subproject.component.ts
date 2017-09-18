@@ -56,9 +56,9 @@ export class Subproject {
 
   resetForm() {
     this.subProject.idnprj = null;
-    this.subProject.tb_gn_project_shortname = '';
+    this.subProject.shortnamegnp = '';
     this.subProject.name = '';
-    this.subProject.shortname = '';
+    this.subProject.shortnamespr = '';
     this.subProject.creationdate = '';
     this.subProject.description = '';
     this.label.idprjlabel = null;
@@ -68,6 +68,7 @@ export class Subproject {
   }
 
   saveSubProject() {
+   
     let conversionDate = this.subProject.creationdate.formatted;
     this.subProject.creationdate = conversionDate;
     this._viewSubProjectsService.addSubProject(this.subProject)

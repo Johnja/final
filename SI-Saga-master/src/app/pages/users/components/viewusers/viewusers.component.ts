@@ -17,12 +17,25 @@ export class ViewUsers {
   roles: Role[];
   users: Users[];
   msgError: string;
+  filterQuery = "" ;
+  rowsOnPage = 10;
+  sortBy = 'name';
+  sortOrder = 'asc';
 
   constructor(private _viewUsersService: ViewUsersService, private _roleService: RoleService) {
 
     this.loadRoles();
     this.loadUsers();
   }
+
+    
+  toInt(num: string) {
+    return +num;
+}
+
+sortByWordLength = (a: any) => {
+    return a.name.length;
+}
 
   loadRoles() {
 

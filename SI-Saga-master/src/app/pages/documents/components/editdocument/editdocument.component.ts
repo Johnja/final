@@ -54,11 +54,11 @@ export class Editdocument {
 
   resetForm(){
     this.document.idndocument = null ;
-    this.document.shortname = '';
+    this.document.shortnameDOC = '';
     this.document.name = '';
     this.document.description = '';
     this.document.creationdate = '';
-    this.document.tb_prj_projects_shortname = null;
+    this.document.shortnameSPR = null;
   }
   
   saveDocument() {

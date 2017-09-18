@@ -51,8 +51,8 @@ export class Generalproject {
   }
 
   resetForm() {
-    this.project.idgnrprj = null;
-    this.project.shortname = '';
+    
+    this.project.shortnamegnp = '';
     this.project.name = '';
     this.project.description = '';
     this.project.creationdate = '';

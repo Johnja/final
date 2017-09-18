@@ -13,337 +13,252 @@
 			<div class="box-shadow-border"></div>
 			<br>
 			<div class="form-project" *ngIf="showForm == 1">
-				<!--
 				<div class="form-group row">
-							<h4>Proyectos </h4>
-						</div>
-				<div class="form-group row">
-					<div class="form-group col-md-6">
-						<label for="shortnamevprj" class="control-label col-md-12">Nombre Corto:</label>
-						<div class="col-md-12">
-								<div class="input-group input-group-sm">
-										<input type="text" class="form-control with-primary-addon" placeholder="Nombre corto" aria-describedby="basic-addon1">
-										<span class="input-group-addon input-group-addon-primary addon-rigth" id="basic-addon1"><button class="btn btn-primary">Go!</button></span>
-										
-								</div>
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						
-						<label for="authorvprj" class="control-label col-md-12">Autor:</label>
-						<div class="form-group col-md-12">
-								<div class="form-group">
-									
-									<select  multiple class="form-control text-center" id="exampleSelect2">
-										
-									  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
-			
-									 
-									</select>
-									  </div>
-			
-						</div>
-					</div>
+					<h4>Proyectos </h4>
 				</div>
-				
-				<div class="form-group row">
-				
-					<div class="form-group col-md-6">
-						<label for="datefromvprj" class="control-label col-md-12">Desde:</label>
-						<div class="col-md-12">
-							<div class="input-group">
-								<my-date-picker name="mydate" [options]="myDatePickerOptions"
-								[(ngModel)]="model" required></my-date-picker>
-							</div>
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						
-						<label for="datevprj" class="control-label col-md-12">Hasta:</label>
-						<div class="form-group col-md-12 ">
-							<div class="input-group">
-								<my-date-picker name="mydate" [options]="myDatePickerOptions"
-								[(ngModel)]="model" required></my-date-picker>
-							</div>
-						</div>
-					</div>
+
+							<div class="container-fluid">
+					<div class="form-group row">
+						<h4>Buscar Proyectos para listar</h4>
+					</div>	
+				<div class="row">
+			<div class="col-sm-2">
+				<label class="label-control">Columnas por Página</label>
+				<select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+				<option [ngValue]="5">5</option>
+				<option [ngValue]="10">10</option>
+				<option [ngValue]="15">15</option>
+			</select>
+			</div>
+			<div class="col-sm-4">
+				<div class="row">
+					<label class="col-sm-12 label-control">Sort by</label>
 				</div>
-				<div class="form-group row">
-						
-						<div class="form-group col-md-6">
-							<label for="typeprojectvprj" class="control-label col-md-12">Tipo Proyecto:</label>
-							<div class="col-md-12">
-									<div class="form-group">
-											
-										<select  multiple class="form-control text-center" id="exampleSelect2">
-											
-										  <option *ngFor = "let typeProject of typeProjects" [value] = "typeProject.name">{{typeProject.name}}</option>	
-				
-										 
-										</select>
-											  </div>
-							</div>
-						</div>
-						<div class="form-group col-md-6">
-							
+				<div class="row">
+					<div class="offset-sm-1 col-sm-5">
+						<div class="row">
+							<select class="form-control input-sm" [(ngModel)]="sortBy">
+						<option [ngValue]="sortByWordLength">Nombre corto</option>
+						<option ngValue="name">Nombre</option>
+						<option ngValue="description">Descripción</option>
+						<option ngValue="creationdate">Fecha creación</option>
+						<option ngValue="author">Autor</option>
+						<option ngValue="typeproject">Tipo Proyecto</option>
+					</select>
 						</div>
 					</div>
-				-->
-				<!-- Table responsive whit data -->
-				<div class="form-group row">
-					<div class="form-group col-md-6">
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover table-condensed text-center ">
-								<thead>
-									<tr class="success">
-										<th class="text-center">
-											<h5>Nombre Corto</h5>
-										</th>
-										<th class="text-center">
-											<h5>Nombre</h5>
-										</th>
-										<th class="text-center">
-											<h5>Descripción</h5>
-										</th>
-										<th class="text-center">
-											<h5>Fecha Creación</h5>
-										</th>
-										<th class="text-center">
-											<h5>Autor</h5>
-										</th>
-										<th class="text-center">
-											<h5>Tipo Proyecto</h5>
-										</th>
-										<th class="text-center">
-											<h5>Editar</h5>
-										</th>
-										<th class="text-center">
-											<h5>Eliminar</h5>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr *ngFor="let project of projects">
-										<td>{{project.shortname}}</td>
-										<td>{{project.name}}</td>
-										<td>{{project.description}}</td>
-										<td>{{project.creationdate}}</td>
-										<td></td>
-										<td></td>
-										<td>
-											<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
-										</td>
-										<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
-									</tr>
-								</tbody>
-								<tfoot>
-								</tfoot>
-							</table>
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover table-condensed text-center ">
-								<thead>
-									<tr class="success">
-										<th class="text-center">
-											<h5>Proyecto Raíz</h5>
-										</th>
-										<th class="text-center">
-											<h5>Nombre Corto</h5>
-										</th>
-										<th class="text-center">
-											<h5>Nombre</h5>
-										</th>
-										<th class="text-center">
-											<h5>Descripción</h5>
-										</th>
-										<th class="text-center">
-											<h5>Fecha Creación</h5>
-										</th>
-										<th class="text-center">
-											<h5>Etiquetas</h5>
-										</th>
-										<th class="text-center">
-											<h5>Autor</h5>
-										</th>
-										<th class="text-center">
-											<h5>Documento</h5>
-										</th>
-										<th class="text-center">
-											<h5>Editar</h5>
-										</th>
-										<th class="text-center">
-											<h5>Eliminar</h5>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr *ngFor="let subProject of subProject">
-										<td>{{subProject.idgnrprj}}</td>
-										<td>{{subProject.shortname}}</td>
-										<td>{{subProject.name}}</td>
-										<td>{{subProject.description}}</td>
-										<td>{{subProject.creationdate}}</td>
-										<td></td>
-										<td></td>
-										<td>
-											<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-document-text"></span></button>
-										</td>
-										<td>
-											<button class="btn btn-success" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
-										</td>
-										<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
-									</tr>
-								</tbody>
-								<tfoot>
-								</tfoot>
-							</table>
+					<div class="offset-sm-1 col-sm-5">
+						<div class="row">
+							<select class="form-control input-sm" [(ngModel)]="sortOrder">
+						<option ngValue="asc">Ascendente</option>
+						<option ngValue="desc">Descendente</option>
+						<option ngValue="badValue">Valor Cercano</option>
+					</select>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Información de Proyectos</div>
+
+			<table class="table table-striped" [mfData]="projects | dataFilter : filterQuery" #mf="mfDataTable" 
+			[mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+			<thead>
+				<tr>
+					
+					<th style="width: 10%">
+						<mfDefaultSorter [by]="sortByWordLength">Nombre Corto</mfDefaultSorter>
+					</th>
+					<th style="width: 20%">
+						<mfDefaultSorter by="name">Name</mfDefaultSorter>
+					</th>
+					<th style="width: 20%">
+							<mfDefaultSorter by="description">descripción</mfDefaultSorter>
+						</th>
+					<th style="width: 10%">
+						<mfDefaultSorter by="creationdate">Fecha Creación</mfDefaultSorter>
+					</th>
+					<th style="width: 10%">
+							<mfDefaultSorter by="author">Author</mfDefaultSorter>
+						</th>
+						
+					<th style="width: 10%">
+						<mfDefaultSorter by="typeproject">Tipo Proyecto</mfDefaultSorter>
+					</th>
+					<th style="width: 10%">
+						<mfDefaultSorter by="edit">Editar</mfDefaultSorter>
+					</th>
+					<th style="width: 10%">
+						<mfDefaultSorter by="delete">Eliminar</mfDefaultSorter>
+					
+				</tr>
+				<tr>
+					<th colspan="8">
+						Filtro
+						<input class="form-control" [(ngModel)]="filterQuery" />
+					</th>
+				</tr>
+			</thead>
+				<tbody>
+					<tr *ngFor="let item of mf.data">
+					
+						<td>{{item.shortnamegnp}}</td>
+						<td>{{item.name}}</td>
+						<td >{{item.description}}</td>
+						<td>{{item.creationdate}}</td>
+						<td>Autor</td>
+						<td>Autor</td>
+						
+							
+							<td>
+								<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
+							</td>
+							<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button>
+							</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					
+					<tr>
+						<td colspan="5">
+							<mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+			</div>
 			<div class="form-project-sp" *ngIf="showForm == 2">
-				<!--
+				
 					<div class="form-group row">
 							<h4>SubProyectos </h4>
 						</div>
-				<div class="form-group row">
-					<div class="form-group col-md-6">
-						<label for="shortnamevprj" class="control-label col-md-12">Nombre Corto:</label>
-						<div class="col-md-12">
-								<div class="input-group input-group-sm">
-										<input type="text" class="form-control with-primary-addon" placeholder="Nombre corto" aria-describedby="basic-addon1">
-										<span class="input-group-addon input-group-addon-primary addon-rigth" id="basic-addon1"><button class="btn btn-primary">Go!</button></span>
-										
+
+				
+						<div class="container-fluid">
+							<div class="form-group row">
+								<h4>Buscar Subproyectos para listar</h4>
+							</div>	
+						<div class="row">
+					<div class="col-sm-2">
+						<label class="label-control">Columnas por Página</label>
+						<select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+						<option [ngValue]="5">5</option>
+						<option [ngValue]="10">10</option>
+						<option [ngValue]="15">15</option>
+					</select>
+					</div>
+					<div class="col-sm-4">
+						<div class="row">
+							<label class="col-sm-12 label-control">Sort by</label>
+						</div>
+						<div class="row">
+							<div class="offset-sm-1 col-sm-5">
+								<div class="row">
+									<select class="form-control input-sm" [(ngModel)]="sortBy">
+								<option [ngValue]="sortByWordLength">Proyecto Raiz</option>
+								<option ngValue="shortnamespr">Nombre corto</option>
+								<option ngValue="name">Nombre</option>
+								<option ngValue="description">Descripción</option>
+								<option ngValue="creationdate">Fecha creación</option>
+								<option ngValue="labels">Etiquetas</option>
+								<option ngValue="author">Autor</option>
+							</select>
 								</div>
+							</div>
+							<div class="offset-sm-1 col-sm-5">
+								<div class="row">
+									<select class="form-control input-sm" [(ngModel)]="sortOrder">
+								<option ngValue="asc">Ascendente</option>
+								<option ngValue="desc">Descendente</option>
+								<option ngValue="badValue">Valor Cercano</option>
+							</select>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="form-group col-md-6">
-					
-						<label for="authorvprj" class="control-label col-md-12">Autor:</label>
-						<div class="form-group col-md-12">
-								<div class="form-group">
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Información de Subproyectos</div>
+		
+					<table class="table table-striped" [mfData]="subProject | dataFilter : filterQuery" #mf="mfDataTable" 
+					[mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+						<thead>
+							<tr>
+								
+								<th style="width: 10%">
+									<mfDefaultSorter [by]="sortByWordLength">Proyecto Raíz</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+									<mfDefaultSorter by="shortname">Nombre Corto</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+									<mfDefaultSorter by="name">Name</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+										<mfDefaultSorter by="description">descripción</mfDefaultSorter>
+									</th>
+								<th style="width: 10%">
+									<mfDefaultSorter by="creationdate">Fecha Creación</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+										<mfDefaultSorter by="label">Etiqueta</mfDefaultSorter>
+									</th>
 									
-									<select  multiple class="form-control text-center" id="exampleSelect2">
-										
-									  <option *ngFor = "let author of authors" [value] = "author.name">{{author.name}}</option>	
-			
-									 
-									</select>
-									  </div>
-			
-						</div>
-					</div>
-				</div>
-				
-				<div class="form-group row">
-					
-					<div class="form-group col-md-6">
-						<label for="datefromvprj" class="control-label col-md-12">Desde:</label>
-						<div class="col-md-12">
-							<div class="input-group">
-								<my-date-picker name="mydate" [options]="myDatePickerOptions"
-								[(ngModel)]="model" required></my-date-picker>
-							</div>
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						
-						<label for="datevprj" class="control-label col-md-12">Hasta:</label>
-						<div class="form-group col-md-12 ">
-							<div class="input-group">
-								<my-date-picker name="mydate" [options]="myDatePickerOptions"
-								[(ngModel)]="model" required></my-date-picker>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="form-group row">
-				
-						
-						<div class="form-group col-md-6">
-								<label for="labelnprj" class="control-label  col-md-12">Etiqueta:</label>
-								<div class="col-md-12">
-										<div class="form-group">
-												
-											<select  multiple class="form-control text-center" id="exampleSelect2">
-												
-											  <option *ngFor = "let label of labels" [value] = "label.name">{{label.name}}</option>	
-			
-											 
-											</select>
-											  </div>
-								</div>
-						</div>
-						<div class="form-group col-md-6">
+								<th style="width: 10%">
+									<mfDefaultSorter by="author">Autor</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+									<mfDefaultSorter by="document">Documento</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+									<mfDefaultSorter by="edit">Editar</mfDefaultSorter>
+								</th>
+								<th style="width: 10%">
+									<mfDefaultSorter by="delete">Eliminar</mfDefaultSorter>
+								
+							</tr>
+							<tr>
+								<th colspan="11">
+									Filtro
+									<input class="form-control" [(ngModel)]="filterQuery" />
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of mf.data">
+								
+								<td>{{item.shortnamegnp}}</td>
+								<td>{{item.shortnamespr}}</td>
+								<td>{{item.name}}</td>
+								<td >{{item.description}}</td>
+								<td>{{item.creationdate}}</td>
+								<td>Autor</td>
+								<td>Etiqueta</td>
+								
+									
+								<td>
+									<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-document-text"></span></button>
+								</td>
+								<td>
+									<button class="btn btn-success" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
+								</td>
+								<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
+							</tr>
+						</tbody>
+						<tfoot>
 							
-						</div>
-					</div>
-				-->
-				<!-- Table responsive whit data -->
-				<div class="form-group row">
-					<div class="form-group col-md-12">
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover table-condensed text-center ">
-								<thead>
-									<tr class="success">
-										<th class="text-center">
-											<h5>Proyecto Raíz</h5>
-										</th>
-										<th class="text-center">
-											<h5>Nombre Corto</h5>
-										</th>
-										<th class="text-center">
-											<h5>Nombre</h5>
-										</th>
-										<th class="text-center">
-											<h5>Descripción</h5>
-										</th>
-										<th class="text-center">
-											<h5>Fecha Creación</h5>
-										</th>
-										<th class="text-center">
-											<h5>Etiquetas</h5>
-										</th>
-										<th class="text-center">
-											<h5>Autor</h5>
-										</th>
-										<th class="text-center">
-											<h5>Documento</h5>
-										</th>
-										<th class="text-center">
-											<h5>Editar</h5>
-										</th>
-										<th class="text-center">
-											<h5>Eliminar</h5>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr *ngFor="let subproject of subProject">
-										<td>{{subproject.idgnrprj}}</td>
-										<td>{{subproject.shortname}}</td>
-										<td>{{subproject.name}}</td>
-										<td>{{subproject.description}}</td>
-										<td>{{subproject.creationdate}}</td>
-										<td></td>
-										<td></td>
-										<td>
-											<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-document-text"></span></button>
-										</td>
-										<td>
-											<button class="btn btn-success" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
-										</td>
-										<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button></td>
-									</tr>
-								</tbody>
-								<tfoot>
-								</tfoot>
-							</table>
-						</div>
-					</div>
+							<tr>
+								<td colspan="5">
+									<mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
 				</div>
+			</div>
 			</div>
 		</div>
 	</form>

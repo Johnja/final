@@ -18,6 +18,8 @@ export class ViewProjectsService {
 
   }
 
+
+
   getProjects(): Observable<Projects[]> {
     let url = `${this.url}/findall`;
     return this.http.get(url)
@@ -35,7 +37,7 @@ export class ViewProjectsService {
 
   putProject(project: Projects) {
 
-    let url = `${this.url}/edit/${project.shortname}`;
+    let url = `${this.url}/edit/${project.shortnamegnp}`;
     let iJson = JSON.stringify(project);
     return this.http.put(url, iJson, { headers: this.headers })
       .map(r => r.json())

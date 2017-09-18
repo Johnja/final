@@ -6,16 +6,16 @@
 			</div>
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
+					<label for="shortnameDOC" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
 						<input class="form-control" id="shortname" name="shortname" type="text" placeholder="Nombre Corto" 
-						[(ngModel)]="document.shortname"
-						 #shortname="ngModel" required maxlength="10" minlength="3">
-						<div *ngIf="shortname.errors">
-							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger">
+						[(ngModel)]="document.shortnameDOC"
+						 #shortnameDOC="ngModel" required maxlength="10" minlength="3">
+						<div *ngIf="shortnameDOC.errors">
+							<div *ngIf="shortnameDOC.touched && !shortnameDOC.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 							</div>
-							<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+							<div *ngIf="!shortnameDoC.validator.minlength && shortnameDCO.touched" class="alert alert-danger ">
 								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
 							</div>
 
@@ -74,13 +74,13 @@
 			</div>
 			<div class="form-group row">
 				<div class="form-group col-md-6">
-					<label for="idnprj" class="control-label col-md-12">Proyecto:</label>
+					<label for="shortnameSPR" class="control-label col-md-12">Proyecto:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="idnprj" name="idnprj" placeholder="Proyecto Asociado" 
-						[(ngModel)]="document.idnprj"
-						 #idnprj="ngModel" required maxlength="10" minlength="3">
-						<div *ngIf="idnprj.errors">
-							<div *ngIf="idnprj.touched && !idnprj.valid" class="alert alert-danger">
+						<input type="text" class="form-control" id="shortnameSPR" name="shortnameSPR" placeholder="Proyecto Asociado" 
+						[(ngModel)]="document.shortnameSPR"
+						 #shortnameSPR="ngModel" required maxlength="10" minlength="3">
+						<div *ngIf="shortnameSPR.errors">
+							<div *ngIf="shortnameSPR.touched && !shortnameSPR.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 							</div>
 						</div>
@@ -106,12 +106,12 @@
 				<div class="col-md-6">
 				</div>
 				<div class="col-md-3">
-					<div *ngIf="shortname.errors || name.errors || description.errors || creationdate.errors || file.errors || idnprj.errors">
+					<div *ngIf="shortnameDOC.errors || name.errors || description.errors || creationdate.errors || file.errors || shortnameSPR.errors">
 						<button class="btn btn-success" (click)="saveDocument()" disabled="">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
 					</div>
 
-					<div *ngIf="!shortname.errors && !name.errors && !description.errors && !creationdate.errors && !file.errors && !idnprj.errors">
+					<div *ngIf="!shortnameDOC.errors && !name.errors && !description.errors && !creationdate.errors && !file.errors && !shortnameSPR.errors">
 						<button class="btn btn-success" (click)="saveDocument()">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
 					</div>

@@ -20,6 +20,14 @@ import { TypeProjectsService} from '../../theme/services/typeProjectsService/typ
 import { LabelsService} from '../../theme/services/labelsService/labels.service';
 import { MyDatePickerModule } from 'mydatepicker';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { DataTableModule } from 'angular2-datatable';
+import { DataFilterPipe } from './data-filter.pipe';
+import { HotTable, HotTableModule } from 'ng2-handsontable';
+
+
+
+
 
 @NgModule({
   imports: [
@@ -31,7 +39,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     HttpModule,
     routing,
     MyDatePickerModule,
- 
+    Ng2SmartTableModule,
+    DataTableModule,
     
   ],
   declarations: [
@@ -43,6 +52,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     Generalproject,
     Projects,
     DefaultModalsProjects,
+    DataFilterPipe, 
    
   ],
   entryComponents: [
@@ -54,6 +64,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     ViewAuthorsService,
     TypeProjectsService,
     LabelsService,
+  
   ]
 })
 export class ProjectsModule {

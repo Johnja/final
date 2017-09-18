@@ -17,7 +17,7 @@ import { SubProject } from '../../../../theme/services/viewSubProjectsService/su
   templateUrl: './viewprojects.html',
   styleUrls: ['./viewprojects.scss']
 })
-export class Viewprojects {
+export class Viewprojects  {
 
   private myDatePickerOptions: IMyDpOptions = {
     // other options...
@@ -30,6 +30,10 @@ export class Viewprojects {
   authors: Authors[];
   labels: Labels[];
   msgError: string;
+  filterQuery = "" ;
+  rowsOnPage = 10;
+  sortBy = 'shortnamegnr';
+  sortOrder = 'asc';
 
   constructor(private _viewProjectsService: ViewProjectsService,
     private _viewSubProjectsService: ViewSubProjectsService,
@@ -41,7 +45,18 @@ export class Viewprojects {
     this.loadLabels();
     this.loadProjects();
     this.loadSubProjects();
+   
   }
+
+
+  toInt(num: string) {
+    return +num;
+}
+
+sortByWordLength = (a: any) => {
+    return a.shortnamegnr.length;
+}
+
   loadSubProjects() {
 
     this._viewSubProjectsService
