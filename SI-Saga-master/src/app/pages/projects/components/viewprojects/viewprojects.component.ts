@@ -80,7 +80,7 @@ goEditProject(project: Projects){
     let id = this.projectSelection.idgnrprj;
       let link = ['pages/projects/editproject', id ];
       this.router.navigate(link);  
-  }
+  }  
   
   }
 
