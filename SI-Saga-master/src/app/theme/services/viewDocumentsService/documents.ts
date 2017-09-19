@@ -1,10 +1,10 @@
 export class Documents {
     
     idndocument: number;
-    shortnameDOC: string;
+    shortnamedoc: string;
     name: string;
     description: string;
     creationdate: any;
-    shortnameSPR: string;
-    file: string;
+    shortnamespr: string;
+    file: any;
     }

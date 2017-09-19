@@ -20,6 +20,20 @@ private user: Users = new Users();
     
   }
 
+  deleteUser(id: number): Observable<Users> {
+    let url = `${this.url}/delete/${id}`;
+    return this.http.delete(url)
+      .map(r => r.json())
+      .catch(this.handleError);
+  }
+
+  getUser(id: number): Observable<Users> {
+    const url = `${this.url}/find/${id}`;
+    return this.http.get(url).
+      map(res => res.json())
+        .catch(this.handleError);
+  }
+
   getUsers(): Observable<Users[]>{  
     let url = `${this.url}/findall`;
      return this.http.get(url)

@@ -6,8 +6,8 @@
 			</div>
 			<div class="form-group row">
 				<div class="btn-group">
-					<button class="btn btn-primary" (click)="showFormEdit = 1" ng-click="formToggle()">Proyecto</button>
-					<button class="btn btn-primary" (click)="showFormEdit = 2" ng-click="formToggle()">Subproyecto</button>
+					<button class="btn btn-primary" (click)="showFormEdit = 1" (click)="formToggle()">Proyecto</button>
+					<button class="btn btn-primary" (click)="showFormEdit = 2" (click)="formToggle()">Subproyecto</button>
 				</div>
 			</div>
 			<div class="box-shadow-border"></div>
@@ -21,7 +21,7 @@
 						<label for="idgnrprj" class="control-label col-md-12">ID:</label>
 						<div class="col-md-12">
 							<input class="form-control" id="idgnrprj" name="idgnrprj" type="text" 
-							[(ngModel)]="project.idgnrprj" #idgnrprj="ngModel" maxlength="10" minlength="1"
+							[(ngModel)]="project.idgnrprj" #idgnrprj="ngModel" value = {{project.idgnrprj}} maxlength="10" minlength="1"
 							 required readonly/>
 						</div>
 						<div *ngIf="idgnrprj.errors">
@@ -31,16 +31,16 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="shortnameGNP" class="control-label col-md-12">Nombre Corto:</label>
+						<label for="shortnamegnp" class="control-label col-md-12">Nombre Corto:</label>
 						<div class="col-md-12">
 							<input class="form-control" id="shortname" name="shortname" type="text" 
-							[(ngModel)]="project.shortnameGNP" #shortnameGNP="ngModel"
+							[(ngModel)]="project.shortnamegnp" #shortnamegnp="ngModel" value = {{project.shortnamegnp}}
 							 required maxlength="10" minlength="3">
-							<div *ngIf="shortnameGNP.errors">
-								<div *ngIf="shortnameGNP.touched && !shortnameGNP.valid" class="alert alert-danger">
+							<div *ngIf="shortnamegnp.errors">
+								<div *ngIf="shortnamegnp.touched && !shortnamegnp.valid" class="alert alert-danger">
 									<strong>Warning!</strong>Campo requerido.
 								</div>
-								<div *ngIf="!shortnameGNP.validator.minlength && shortnameGNP.touched" class="alert alert-danger ">
+								<div *ngIf="!shortnamegnp.validator.minlength && shortnamegnp.touched" class="alert alert-danger ">
 									<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
 								</div>
 							</div>
@@ -52,7 +52,7 @@
 						<label for="name" class="control-label col-md-12">Nombre:</label>
 						<div class="col-md-12">
 							<input type="text" class="form-control" id="name" name="name" 
-							[(ngModel)]="project.name" #name="ngModel" required maxlength="50"
+							[(ngModel)]="project.name" #name="ngModel" required maxlength="50" value = {{project.name}}
 							 minlength="3">
 							<div *ngIf="name.errors">
 								<div *ngIf="name.touched && !name.valid" class="alert alert-danger">
@@ -67,7 +67,7 @@
 					<div class="form-group col-md-6">
 						<label for="description" class="control-label col-md-12">Descripción:</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control" id="description" name="description" 
+							<input type="text" class="form-control" id="description" name="description" value = {{project.description}}
 							[(ngModel)]="project.description" #description="ngModel"
 							 required maxlength="100" minlength="3">
 							<div *ngIf="description.errors">
@@ -141,15 +141,15 @@
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
-						<div *ngIf="idgnrprj.errors || shortnameGNP.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idnprjtype.errors">
+						<div *ngIf="idgnrprj.errors || shortnamegnp.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idnprjtype.errors">
 							<button class="btn btn-primary" name="buttonSave" (click)="goSubProject()" disabled>SubProyecto	</button>
-							<button class="btn btn-success" (click)="saveProject()" disabled="">Guardar</button>
+							<button class="btn btn-success" (click)="updateProject()" disabled="">Guardar</button>
 							<button class="btn btn-info" (click)="resetFormProject()">Cancelar</button>
 						</div>
 
-						<div *ngIf="!idgnrprj.errors && !shortnameGNP.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idnprjtype.errors">
+						<div *ngIf="!idgnrprj.errors && !shortnamegnp.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idnprjtype.errors">
 							<button class="btn btn-primary" name="buttonSave" (click)="goSubProject()">SubProyecto	</button>
-							<button class="btn btn-success" (click)="saveProject()">Guardar</button>
+							<button class="btn btn-success" (click)="updateProject()">Guardar</button>
 							<button class="btn btn-info" (click)="resetFormProject()">Cancelar</button>
 						</div>
 					</div>
@@ -164,7 +164,7 @@
 						<label for="idnprj" class="control-label col-md-12">ID:</label>
 						<div class="col-md-12">
 							<input class="form-control" id="idnprj" name="idnprj" type="text" 
-							[(ngModel)]="subProject.idnprj" #idnprj="ngModel" maxlength="10" minlength="1" required
+							[(ngModel)]="subProject.idnprj" #idnprj="ngModel" maxlength="10" minlength="1" value = {{subProject.idnprj}} required
 							 readonly/>
 						</div>
 						<div *ngIf="idnprj.errors">
@@ -176,8 +176,8 @@
 					<div class="form-group col-md-6">
 						<label for="shortnamegnp" class="control-label col-md-12">Shortname Poyecto Raíz:</label>
 						<div class="col-md-12">
-							<input class="form-control" id="shortnamegnp" name="shortnamegnp" type="text" 
-							[(ngModel)]="subProject.shortnamegnp" #ahortnamegnp="ngModel"
+							<input class="form-control" id="shortnamegnp" name="shortnamegnp" type="text" value = {{subProject.shortnamegnp}}
+							[(ngModel)]="subProject.shortnamegnp" #shortnamegnp="ngModel"
 							maxlength="10" minlength="3" required>
 						</div>
 						<div *ngIf="shortnamegnp.errors">
@@ -194,7 +194,7 @@
 					<div class="form-group col-md-6">
 						<label for="shortnamespr" class="control-label col-md-12">Nombre Corto:</label>
 						<div class="col-md-12">
-							<input class="form-control" id="shortnamespr" name="shortnamespr" type="text" 
+							<input class="form-control" id="shortnamespr" name="shortnamespr" type="text" value = {{subProject.shortnamespr}}
 							[(ngModel)]="subProject.shortnamespr" #shortnamespr="ngModel"
 							 maxlength="10" minlength="3" required>
 							<div *ngIf="shortnamespr.errors">
@@ -210,7 +210,7 @@
 					<div class="form-group col-md-6">
 						<label for="name" class="control-label col-md-12">Nombre:</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control" id="name" [(ngModel)]="subProject.name" 
+							<input type="text" class="form-control" id="name" [(ngModel)]="subProject.name" value = {{subProject.name}}
 							name="name" #name="ngModel" maxlength="50"
 							 minlength="3" required>
 							<div *ngIf="name.errors">
@@ -228,7 +228,7 @@
 					<div class="form-group col-md-6">
 						<label for="description" class="control-label col-md-12">Descripción:</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control" id="description" [(ngModel)]="subProject.description" 
+							<input type="text" class="form-control" id="description" [(ngModel)]="subProject.description" value = {{subProject.description}}
 							name="description" #description="ngModel"
 							 maxlength="150" minlength="3" required>
 							<div *ngIf="description.errors">
@@ -299,13 +299,13 @@
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-4">
-						<div *ngIf="shortnameGNP.errors || shortnameSPR.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idprjlabel.errors">
+						<div *ngIf="shortnamegnp.errors || shortnamespr.errors || name.errors || description.errors || creationdate.errors || idnauthor.errors || idprjlabel.errors">
 							<button class="btn btn-primary" name="buttonSave" (click)="goDocument()" disabled>Documento</button>
-							<button class="btn btn-success" (click)="updateProject()" disabled="">Guardar</button>
+							<button class="btn btn-success" (click)="updateSubProject()" disabled="">Guardar</button>
 							<button class="btn btn-info" (click)="resetFormSubProject()">Cancelar</button>
 						</div>
 
-						<div *ngIf="!shortnameGNP.errors && !shortnameSPR.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idprjlabel.errors">
+						<div *ngIf="!shortnamegnp.errors && !shortnamespr.errors && !name.errors && !description.errors && !creationdate.errors && !idnauthor.errors && !idprjlabel.errors">
 							<button class="btn btn-primary" name="buttonSave" (click)="goDocument()">Documento</button>
 							<button class="btn btn-success" (click)="updateSubProject()">Guardar</button>
 							<button class="btn btn-info" (click)="resetFormSubProject()">Cancelar</button>

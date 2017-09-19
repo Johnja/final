@@ -51,14 +51,7 @@ export const PAGES_MENU = [
               }
             }
           },
-          {
-            path: 'editproject',
-            data: {
-              menu: {
-                title: 'Editar Proyecto',
-              }
-            }
-          },
+    
     
          
         ]
@@ -92,14 +85,7 @@ export const PAGES_MENU = [
               }
             }
           },
-          {
-            path: 'editdocument',
-            data: {
-              menu: {
-                title: 'Editar Documento',
-              }
-            }
-          },
+    
    
         ]
       },
@@ -131,14 +117,7 @@ export const PAGES_MENU = [
               }
             }
           },
-          {
-            path: 'edituser',
-            data: {
-              menu: {
-                title: 'Editar usuario',
-              }
-            }
-          },
+    
  
         ]
       },

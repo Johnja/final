@@ -7,7 +7,7 @@
 				<div class="row">
 			<div class="col-sm-2">
 				<label class="label-control">Columnas por Página</label>
-				<select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+				<select class="form-control input-sm">
 				<option [ngValue]="5">5</option>
 				<option [ngValue]="10">10</option>
 				<option [ngValue]="15">15</option>
@@ -20,7 +20,7 @@
 				<div class="row">
 					<div class="offset-sm-1 col-sm-5">
 						<div class="row">
-							<select class="form-control input-sm" [(ngModel)]="sortBy">
+							<select class="form-control input-sm" >
 						<option [ngValue]="sortByWordLength">Nombre corto</option>
 						<option ngValue="name">Nombre</option>
 						<option ngValue="description">Descripción</option>
@@ -32,7 +32,7 @@
 					</div>
 					<div class="offset-sm-1 col-sm-5">
 						<div class="row">
-							<select class="form-control input-sm" [(ngModel)]="sortOrder">
+							<select class="form-control input-sm" >
 						<option ngValue="asc">Ascendente</option>
 						<option ngValue="desc">Descendente</option>
 						<option ngValue="badValue">Valor Cercano</option>
@@ -45,8 +45,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Información de Documentos</div>
 
-			<table class="table table-striped" [mfData]="documents | dataFilter : filterQuery" #mf="mfDataTable" 
-			[mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+			<table class="table table-striped" [mfData]="documents " #mf="mfDataTable" 
+			 >
 				<thead>
 					<tr>
 						
@@ -63,7 +63,7 @@
 							<mfDefaultSorter by="creationdate">Fecha Creación</mfDefaultSorter>
 						</th>
 						<th style="width: 10%">
-								<mfDefaultSorter by="project">Projecto</mfDefaultSorter>
+								<mfDefaultSorter by="project">Proyecto</mfDefaultSorter>
 							</th>
 							
 						<th style="width: 10%">
@@ -77,9 +77,9 @@
 						
 					</tr>
 					<tr>
-						<th colspan="9">
+						<th colspan="8">
 							Filtro
-							<input class="form-control" [(ngModel)]="filterQuery" />
+							<input class="form-control" />
 						</th>
 					</tr>
 				</thead>
@@ -92,11 +92,11 @@
 						<td>{{item.creationdate}}</td>
 						<td>{{item.shortnamespr}}</td>
 						<td><button class="btn btn-primary" ng-click="editInfo(detail)" title="Document"><span class = "ion ion-document-text"></span></button></td>
-						<td>	
+						
 							<td>
-								<button class="btn btn-primary" ng-click="editInfo(detail)" title="Edit"><span class = "ion ion-edit"></span></button>
+								<button class="btn btn-primary" (click)="goEditDocument(item)" title="Edit"><span class = "ion ion-edit"></span></button>
 							</td>
-							<td><button class="btn btn-danger" ng-click="editInfo(detail)" title="Delete"><span class = "ion ion-trash-a"></span></button>
+							<td><button class="btn btn-danger" (click)="goDeleteDocument(item)" title="Delete"><span class = "ion ion-trash-a"></span></button>
 							</td>
 					</tr>
 				</tbody>

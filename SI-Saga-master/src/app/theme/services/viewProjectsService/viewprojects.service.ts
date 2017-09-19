@@ -18,10 +18,24 @@ export class ViewProjectsService {
 
   }
 
+  
+  deleteProject(id: number)  {
+    let url = `${this.url}/delete/${id}`;
+    return this.http.delete(url)
+      .map(r => r.json())
+      .catch(this.handleError);
+  }  
 
 
   getProjects(): Observable<Projects[]> {
     let url = `${this.url}/findall`;
+    return this.http.get(url)
+      .map(r => r.json())
+      .catch(this.handleError);
+  }
+
+  getProject(id: number): Observable<Projects> {
+    const url = `${this.url}/find/${id}`;
     return this.http.get(url)
       .map(r => r.json())
       .catch(this.handleError);
@@ -37,7 +51,7 @@ export class ViewProjectsService {
 
   putProject(project: Projects) {
 
-    let url = `${this.url}/edit/${project.shortnamegnp}`;
+    let url = `${this.url}/edit/${project.idgnrprj}`;
     let iJson = JSON.stringify(project);
     return this.http.put(url, iJson, { headers: this.headers })
       .map(r => r.json())
@@ -52,7 +66,7 @@ export class ViewProjectsService {
       let body = error.json() || '';
       let err = body.error || JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-
+  
     } else {
 
       errMsg = error.message ? error.message : error.toString();

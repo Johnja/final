@@ -28,7 +28,7 @@ export class BaFileUploader {
     if (files.length) {
       const file = files[0];
       this._onChangeFileSelect(files[0])
-      if (!this._canFleUploadOnServer()) {
+      if (!this._canFileUploadOnServer()) {
         uploadingFile.setAbort();
       } else {
         this.uploadFileInProgress = true;
@@ -53,7 +53,7 @@ export class BaFileUploader {
     this.onFileUploadCompleted.emit(data);
   }
 
-  _canFleUploadOnServer(): boolean {
-    return !!this.fileUploaderOptions['url'];
+  _canFileUploadOnServer(): boolean {
+    return !!this.fileUploaderOptions['C:/Users/jomacias/Music/'];
   }
 }

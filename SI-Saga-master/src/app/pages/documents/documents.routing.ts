@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       { path: 'newdocument', component: Newdocument },
       { path: 'viewdocuments', component: Viewdocuments },
-      { path: 'editdocument', component: Editdocument },
+      { path: 'editdocument/:idndocument', component: Editdocument },
 
     ]
   }

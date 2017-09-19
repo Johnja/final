@@ -9,22 +9,32 @@ import { ViewSubProjectsService } from '../../../../theme/services/viewSubProjec
 import { SubProject } from '../../../../theme/services/viewSubProjectsService/subproject';
 import { NgUploaderOptions } from 'ngx-uploader';
 
+
 @Component({
   selector: 'newdocument',
   templateUrl: './newdocument.html',
-  styleUrls: ['./newdocument.scss']
+  styleUrls: ['./newdocument.scss'],
+
 
 })
 
 export class Newdocument {
+
+
+
+
   document: Documents = new Documents();
   msgError: String;
 
   public fileUploaderOptions: NgUploaderOptions = {
-    // url: 'http://website.com/upload'
-    url: '',
+    // url: 'C:/Users/jomacias/Music'
+    url: 'C:/Users/jomacias/Music/',
   };
 
+  public uploaderOptions:NgUploaderOptions = {
+    // url: 'http://website.com/upload'
+    url: 'C:/Users/jomacias/Music/',
+  };
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
@@ -49,35 +59,51 @@ export class Newdocument {
   }
 
   resetForm() {
-    this.document.idndocument = null;
-    this.document.shortnameDOC = '';
-    this.document.name = '';
-    this.document.description = '';
-    this.document.creationdate = '';
-    this.document.shortnameSPR = null;
 
+    if(confirm("¿Desea cancelar la acción?")){
+      this.document.idndocument = null;
+      this.document.shortnamedoc = '';
+      this.document.name = '';
+      this.document.description = '';
+      this.document.creationdate = '';
+      this.document.shortnamespr = null;
+    }
   }
 
   saveDocument() {
-    let conversionDate = this.document.creationdate.formatted;
-    this.document.creationdate = conversionDate;
-    this._viewDocumentsService.addDocument(this.document)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => console.log('Terminado')
 
-      );
+    if(confirm("¿Desea agregar un documento?")==true){
+
+      let conversionDate = this.document.creationdate.formatted;
+      this.document.creationdate = conversionDate;
+      let conversionfile = 'C:/Users/jomacias/Music/pom.xml';
+      this.document.file = conversionfile;
+      console.log(conversionfile);
+      this._viewDocumentsService.addDocument(this.document)
+        .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+  
+        );
+
+    }
+  
   }
 
   updateDocument() {
     //  if (!this.document) return;
+   
+  if(confirm("¿Desea actualizar un documento?")==true){
     this._viewDocumentsService.putDocument(this.document)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => this.goLista()
-      );
+    .subscribe(
+    rt => console.log(rt),
+    er => console.log(er),
+    () => this.goLista()
+    );
+
+  }
+
   }
 
 }

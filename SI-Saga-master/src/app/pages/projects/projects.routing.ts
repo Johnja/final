@@ -18,7 +18,7 @@ const routes: Routes = [
       
       { path: 'viewprojects', component: Viewprojects },
       { path: 'generalproject', component: Generalproject },
-      { path: 'editproject', component: Editproject },
+      { path: 'editproject/:id', component: Editproject },
 
     ]
   }

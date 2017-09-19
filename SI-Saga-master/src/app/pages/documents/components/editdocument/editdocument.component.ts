@@ -17,12 +17,13 @@ import { NgUploaderOptions } from 'ngx-uploader';
 export class Editdocument {
 
   document: Documents = new Documents();
-
+  documents = [];
+  idndocument: number;
   msgError: String;
 
   public fileUploaderOptions: NgUploaderOptions = {
     // url: 'http://website.com/upload'
-    url: 'C:/Users/jomacias/Documents/Chalo',
+    url: 'C:\Users\jomacias\Documents\Chalo',
   };
 
   public myDatePickerOptions: IMyDpOptions = {
@@ -31,18 +32,17 @@ export class Editdocument {
   }
 
   constructor(private _viewDocumentsService: ViewDocumentsService,
-
     private route: ActivatedRoute,
     private router: Router) {
 
   }
 
-  ngOnitInit() {
-    let id = this.route.snapshot.params['id'];
-    if (!id) return;
-    console.log(id);
-
-  }
+  ngOnInit(): void {
+    this.route.params
+    .switchMap((params: Params) => (this.idndocument = +params['idndocument'],
+  this._viewDocumentsService.getDocument(this.idndocument)))
+  .subscribe(document => this.document = document);
+    }
 
 
   goLista() {
@@ -53,36 +53,33 @@ export class Editdocument {
   }
 
   resetForm(){
-    this.document.idndocument = null ;
-    this.document.shortnameDOC = '';
-    this.document.name = '';
-    this.document.description = '';
-    this.document.creationdate = '';
-    this.document.shortnameSPR = null;
+    if(confirm("¿Desea cancelar la acción?")==true){
+      this.document.idndocument = null ;
+      this.document.shortnamedoc = '';
+      this.document.name = '';
+      this.document.description = '';
+      this.document.creationdate = '';
+      this.document.shortnamespr = null;
+
+    }
+ 
   }
   
-  saveDocument() {
-
-    let conversionDate = this.document.creationdate.formatted;
-    this.document.creationdate = conversionDate;
-    
-    this._viewDocumentsService.addDocument(this.document)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => console.log('Terminado')
-
-      );
-  }
 
   updateDocument() {
     //  if (!this.document) return;
-    this._viewDocumentsService.putDocument(this.document)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => this.goLista()
-      );
+    if(confirm("¿Desea actualizar el documento?")==true){
+      let conversionDate = this.document.creationdate.formatted;
+      this.document.creationdate = conversionDate;
+      this._viewDocumentsService.putDocument(this.document)
+        .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+        );
+
+    }
+ 
   }
 
 }

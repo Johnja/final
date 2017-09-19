@@ -19,8 +19,7 @@ import { DataTableModule } from 'angular2-datatable';
 import { DataFilterPipe } from './data-filter.pipe';
 import { HotTable, HotTableModule } from 'ng2-handsontable';
 
-import { DataTables } from './components/dataTables/dataTables.component';
-import { DataTablesService } from './components/dataTables/dataTables.service';
+
 
 
 

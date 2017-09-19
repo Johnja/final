@@ -10,7 +10,7 @@
 								<label for="idnuser" class="control-label col-md-12">ID:</label>
 								<div class="col-md-12">
 									<input class="form-control" id="idnuser" type="text" placeholder="ID" name="idnuser" 
-									[(ngModel)]="user.idnuser" #idnuser="ngModel"
+									[(ngModel)]="user.idnuser" #idnuser="ngModel" value = {{user.idnuser}}
 									 maxlength="10" minlength="1" required readonly>
 									<div *ngIf="idnuser.errors">
 										<div *ngIf="idnuser.touched && !idnuser.valid" class="alert alert-danger">
@@ -26,7 +26,7 @@
 								<label for="name" class="control-label col-md-12">Nombre:</label>
 								<div class="col-md-12">
 									<input class="form-control" id="name" type="text" placeholder="nombre" name="name" 
-									[(ngModel)]="user.name" #name="ngModel"
+									[(ngModel)]="user.name" #name="ngModel" value = {{user.name}}
 									 required maxlength="50" minlength="3">
 									<div *ngIf="name.errors">
 										<div *ngIf="name.touched && !name.valid" class="alert alert-danger">
@@ -44,7 +44,7 @@
 								<label for="lastname" class="control-label col-md-12">Apellido:</label>
 								<div class="col-md-12">
 									<input type="text" class="form-control" id="lastname" placeholder="apellido" name="lastname" [(ngModel)]="user.lastname"
-									 #lastname="ngModel" required maxlength="50" minlength="3">
+									 #lastname="ngModel" value = {{user.lastname}} required maxlength="50" minlength="3">
 									<div *ngIf="lastname.errors">
 										<div *ngIf="lastname.touched && !lastname.valid" class="alert alert-danger">
 											<strong>Warning!</strong>Campo requerido.
@@ -59,7 +59,7 @@
 								<label for="nameuser" class="control-label col-md-12">Usuario:</label>
 								<div class="col-md-12">
 									<input type="text" class="form-control" id="nameuser" placeholder="usuario" name="nameuser" 
-									[(ngModel)]="user.nameuser" #nameuser="ngModel"
+									[(ngModel)]="user.nameuser" #nameuser="ngModel" value = {{user.nameuser}}
 									 required maxlength="50" minlength="3">
 									<div *ngIf="nameuser.errors">
 										<div *ngIf="nameuser.touched && !nameuser.valid" class="alert alert-danger">
@@ -78,8 +78,8 @@
 								<label for="emai" class="control-label col-md-12">Email:</label>
 								<div class="col-md-12">
 									<input type="text" class="form-control" id="email" placeholder="e-mail" name="email"
-									[(ngModel)]="user.email" #email="ngModel"
-									 required>
+									[(ngModel)]="user.email" #email="ngModel" value = {{user.email}}
+									 required pattern = "^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 									<div *ngIf="email.errors">
 										<div *ngIf="!email.valid && email.touched" class="alert alert-danger">
 											<strong>Warning!</strong>Verifique Email

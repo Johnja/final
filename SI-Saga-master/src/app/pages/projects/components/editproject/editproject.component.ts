@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewAuthorsService } from '../../../../theme/services/authorsService/viewauthors.service';
 import { LabelsService } from '../../../../theme/services/labelsService/labels.service';
 import { IMyDpOptions } from 'mydatepicker';
@@ -30,13 +30,18 @@ export class Editproject {
   subProject: SubProject = new SubProject();
   project: Projects = new Projects();
   typeProjects: TypeProjects[];
+  projects: Projects[];
+  subProjects : SubProject[];
   authors: Authors[];
   labels: Labels[];
   typeProject: TypeProjects = new TypeProjects();
   msgError: string;
   author: Authors = new Authors();
   label: Labels = new Labels();
-  
+  idgnrprj: number;
+  idnprj: number;
+
+
   constructor(private _viewAuthorsService: ViewAuthorsService,
     private _labelsService: LabelsService,
     private _typeProjectsService: TypeProjectsService,
@@ -49,14 +54,24 @@ export class Editproject {
     this.loadLabels();
   }
 
-  ngOnitInit() {
-    let id = this.route.snapshot.params['id'];
-    if (!id) return;
-   console.log(id);
+ 
+  ngOnInit(): void {
+    this.route.params
+    .switchMap((params: Params) => (this.idgnrprj = +params['id'],
+  this._viewProjectsService.getProject(this.idgnrprj)))
+  .subscribe(project => this.project = project);
+ 
+  this.route.params
+  .switchMap((params: Params) => (this.idnprj = +params['id'],
+  this._viewSubProjectsService.getSubProject(this.idnprj)))
+  .subscribe(subProject => this.subProject = subProject)
 
-  }
+ 
+ 
+    }
 
-  goSubProject() {
+
+    goSubProject() {
     let linkSub = ['pages/projects/subproject'];
     this.router.navigate(linkSub);
   }
@@ -66,8 +81,21 @@ export class Editproject {
     this.router.navigate(link);
 
   }
+  
+  deleteProject(){
+   if(confirm("¿Desea borrar el proyecto?")==true){
+    this._viewProjectsService.deleteProject(this.project.idgnrprj)
+    .subscribe(
+    rt => console.log(rt),
+    er => console.log(er),
+    () => console.log('Terminado')
+    );
+   }
+    
+  }
 
   saveProject() {
+    if(confirm("¿Desea guargar el proyecto?")==true){
       let conversionDate = this.project.creationdate.formatted;
       this.project.creationdate = conversionDate;
       this._viewProjectsService.addProject(this.project)
@@ -76,62 +104,85 @@ export class Editproject {
       er => console.log(er),
       () => console.log('Terminado')
       );
+    }      
   }
 
   resetFormProject() {
-    this.project.idgnrprj = null;
-    this.project.name = '';
-    this.project.shortnamegnp = '';
-    this.project.description = '';
-    this.project.creationdate = '';
-    this.typeProject.idnprjtype = null;
-    this.typeProject.name = '';
-    this.author.idnauthor = null;
-    this.author.name = '';
+    if(confirm("¿Desea cancelar la acción?")==true){
+      this.project.idgnrprj = null;
+      this.project.name = '';
+      this.project.shortnamegnp = '';
+      this.project.description = '';
+      this.project.creationdate = '';
+      this.typeProject.idnprjtype = null;
+      this.typeProject.name = '';
+      this.author.idnauthor = null;
+      this.author.name = '';
+      
+    }
+ 
   }
 
   resetFormSubProject() {
-    this.subProject.shortnamegnp = null;
-    this.subProject.idnprj = null;
-    this.subProject.name = '';
-    this.subProject.shortnamespr = '';
-    this.subProject.description = '';
-    this.subProject.creationdate = '';
-    this.author.idnauthor = null;
-    this.author.name = '';
-    this.label.idprjlabel = null;
-    this.label.name = '';
-
+    if(confirm("¿Desea cancelar la acción")==true){
+      this.subProject.shortnamegnp = null;
+      this.subProject.idnprj = null;
+      this.subProject.name = '';
+      this.subProject.shortnamespr = '';
+      this.subProject.description = '';
+      this.subProject.creationdate = '';
+      this.author.idnauthor = null;
+      this.author.name = '';
+      this.label.idprjlabel = null;
+      this.label.name = '';
+    }
+ 
   }
+
   saveSubProject() {
-    let conversionDate = this.subProject.creationdate.formatted;
-    this.subProject.creationdate = conversionDate;
-    this._viewSubProjectsService.addSubProject(this.subProject)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => console.log('Terminado')
-      );
+    if(confirm("¿Desea Guardar un subproyecto?")==true){
+      let conversionDate = this.subProject.creationdate.formatted;
+      this.subProject.creationdate = conversionDate;
+      this._viewSubProjectsService.addSubProject(this.subProject)
+        .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+        );
+    }
+
   }
 
   updateProject() {
     //  if (!this.project) return;
-    this._viewProjectsService.putProject(this.project)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => console.log('Terminado')
-      );
+    if(confirm("¿Desea Actualizar un proyecto?")==true){
+
+      let conversionDate = this.project.creationdate.formatted;
+      this.project.creationdate = conversionDate;
+      this._viewProjectsService.putProject(this.project)
+        .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+        );
+    }
+
   }
 
   updateSubProject() {
     //  if (!this.project) return;
-    this._viewSubProjectsService.putSubProject(this.subProject)
-      .subscribe(
-      rt => console.log(rt),
-      er => console.log(er),
-      () => console.log('Terminado')
-      );
+    if(confirm("¿Desea Actualizar un Subproyecto?")==true){
+      let conversionDate = this.subProject.creationdate.formatted;
+      this.subProject.creationdate = conversionDate;
+      this._viewSubProjectsService.putSubProject(this.subProject)
+        .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+        );
+
+    }
+  
   }
 
   loadTypeProjects() {

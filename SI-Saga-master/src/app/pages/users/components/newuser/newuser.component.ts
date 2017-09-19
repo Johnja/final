@@ -33,29 +33,37 @@ export class Newuser {
   }
 
   ngOnitInit() {
-    let id = this.route.snapshot.params['id'];
-    if (!id) return;
-    console.log(id);
+    
   }
 
 
   resetForm() {
-    this.user.idnuser = null;
-    this.user.name = '';
-    this.user.lastname = '';
-    this.user.nameuser = '';
-    this.user.email = '';
+
+    if( confirm("¿Desea Cancelar la acción?") == true) {
+      
+      this.user.idnuser = null;
+      this.user.name = '';
+      this.user.lastname = '';
+      this.user.nameuser = '';
+      this.user.email = '';
+      
+          } 
+   
   }
 
   saveUser() {
+    if(  confirm("¿Desea Guardar el Usuario?") == true) {
 
-    this._viewUsersService.addUser(this.user)
+      this._viewUsersService.addUser(this.user)
       .subscribe(
       rt => console.log(rt),
-      er => console.log(er),
+      error => this.msgError = <any>error,
       () => console.log('Terminado')
 
       );
+      this.resetForm();
+
+    } 
   }
 
 

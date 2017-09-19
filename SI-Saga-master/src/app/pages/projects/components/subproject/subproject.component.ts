@@ -49,26 +49,33 @@ export class Subproject {
   }
 
   goDocument() {
-    this.saveSubProject();
-    let link = ['pages/documents/newdocument'];
-    this.router.navigate(link);
+    if(confirm("¿Desea guardar el subproyecto y agregar un documento?")==true){
+
+      this.saveSubProject();
+      let link = ['pages/documents/newdocument'];
+      this.router.navigate(link);
+    }
+  
   }
 
   resetForm() {
-    this.subProject.idnprj = null;
-    this.subProject.shortnamegnp = '';
-    this.subProject.name = '';
-    this.subProject.shortnamespr = '';
-    this.subProject.creationdate = '';
-    this.subProject.description = '';
-    this.label.idprjlabel = null;
-    this.label.name = '';
-    this.author.idnauthor = null;
-    this.author.name = '';
+    if(confirm("¿Desea cancelar la acción?")==true){
+      this.subProject.idnprj = null;
+      this.subProject.shortnamegnp = '';
+      this.subProject.name = '';
+      this.subProject.shortnamespr = '';
+      this.subProject.creationdate = '';
+      this.subProject.description = '';
+      this.label.idprjlabel = null;
+      this.label.name = '';
+      this.author.idnauthor = null;
+      this.author.name = '';
+    }
+  
   }
 
   saveSubProject() {
-   
+   if(confirm("¿Desea guardar un subproyecto?")==true){
     let conversionDate = this.subProject.creationdate.formatted;
     this.subProject.creationdate = conversionDate;
     this._viewSubProjectsService.addSubProject(this.subProject)
@@ -77,6 +84,8 @@ export class Subproject {
       er => console.log(er),
       () => console.log('Terminado')
       );
+   }
+  
   }
 
   loadAuthors() {

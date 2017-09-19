@@ -9,7 +9,7 @@
 					<label for="idndocument" class="control-label col-md-12">ID:</label>
 					<div class="col-md-12">
 						<input class="form-control" id="idndocument" type="text"  [(ngModel)]="document.idndocument" name="idndocument"
-						 #idndocument="ngModel" required readonly/>
+						 #idndocument="ngModel"  value = {{document.idndocument}} required readonly/>
 					</div>
 					<div *ngIf="idndocument.errors">
 						<div *ngIf="idndocument.touched && !idndocument.valid" class="alert alert-danger">
@@ -20,13 +20,13 @@
 				<div class="form-group col-md-6">
 					<label for="shortname" class="control-label col-md-12">Nombre Corto:</label>
 					<div class="col-md-12">
-						<input class="form-control" id="shortname" type="text"  [(ngModel)]="document.shortname" name="shortname"
-						 #shortname="ngModel" required maxlength="10" minlength="3">
-						<div *ngIf="shortname.errors">
-							<div *ngIf="shortname.touched && !shortname.valid" class="alert alert-danger">
+						<input class="form-control" id="shortnamedoc" type="text"  [(ngModel)]="document.shortnamedoc" name="shortnamedoc"
+						 #shortnamedoc="ngModel" value = {{document.shortnamedoc}} required maxlength="10" minlength="3">
+						<div *ngIf="shortnamedoc.errors">
+							<div *ngIf="shortnamedoc.touched && !shortname.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 							</div>
-							<div *ngIf="!shortname.validator.minlength && shortname.touched" class="alert alert-danger ">
+							<div *ngIf="!shortnamedoc.validator.minlength && shortnamedoc.touched" class="alert alert-danger ">
 								<strong>Warning!</strong>Se Requieren mínimo 3 caracteres
 							</div>
 						</div>
@@ -37,9 +37,9 @@
 				<div class="form-group col-md-6">
 					<label for="name" class="control-label col-md-12">Nombre:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Documento prueba 1" 
+						<input type="text" class="form-control" id="name" name="name" 
 						[(ngModel)]="document.name"
-						 #name="ngModel" required maxlength="50" minlength="3">
+						 #name="ngModel" value = {{document.name}} required maxlength="50" minlength="3">
 						<div *ngIf="name.errors">
 							<div *ngIf="name.touched && !name.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
@@ -53,8 +53,8 @@
 				<div class="form-group col-md-6">
 					<label for="description" class="control-label col-md-12">Descripción:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="description" name="description" placeholder="Descripción prueba 1" [(ngModel)]="document.description"
-						 #description="ngModel" required maxlength="150" minlength="3">
+						<input type="text" class="form-control" id="description" name="description"  [(ngModel)]="document.description"
+						 #description="ngModel" value = {{document.description}} required maxlength="150" minlength="3">
 						<div *ngIf="description.errors">
 							<div *ngIf="description.touched && !description.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
@@ -71,7 +71,8 @@
 					<label for="creationdate" class="control-label col-md-12">Fecha de Creación:</label>
 					<div class="col-md-12">
 						<div class="input-group date">
-							<my-date-picker name="creationdate" [options]="myDatePickerOptions.dateFormat" [(ngModel)]="document.creationdate" #creationdate="ngModel"
+							<my-date-picker name="creationdate" [options]="myDatePickerOptions" [(ngModel)]="document.creationdate"  #creationdate="ngModel" 
+							
 							 required></my-date-picker>
 						</div>
 						<div *ngIf="creationdate.errors">
@@ -82,12 +83,12 @@
 					</div>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="idnprj" class="control-label col-md-12">Proyecto:</label>
+					<label for="shortnamespr" class="control-label col-md-12">Proyecto:</label>
 					<div class="col-md-12">
-						<input type="text" class="form-control" id="idnprj" name="idnprj" placeholder="01" [(ngModel)]="document.idnprj" #idnprj="ngModel"
-						 required>
-						<div *ngIf="idnprj.errors">
-							<div *ngIf="idnprj.touched && !idnprj.valid" class="alert alert-danger">
+						<input type="text" class="form-control" id="shortnamespr" name="shortnamespr" [(ngModel)]="document.shortnamespr" #shortnamespr="ngModel"
+						value = {{document.shortnamespr}} required>
+						<div *ngIf="shortnamespr.errors">
+							<div *ngIf="shortnamespr.touched && !shortnamespr.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
 							</div>
 						</div>
@@ -98,7 +99,7 @@
 				<div class="form-group col-md-6">
 					<label for="file" class="control-label col-md-12">Documento:</label>
 					<div class="col-md-12">
-						<ba-file-uploader [(ngModel)]="document.file" name="file" #file="ngModel" required></ba-file-uploader>
+						<ba-file-uploader [(ngModel)]="document.file" name="file" #file="ngModel"  required></ba-file-uploader>
 						<div *ngIf="file.errors">
 							<div *ngIf="file.touched && !file.valid" class="alert alert-danger">
 								<strong>Warning!</strong>Campo requerido.
@@ -113,17 +114,17 @@
 				<div class="col-md-6">
 				</div>
 				<div class="col-md-3">
-					<div *ngIf="shortname.errors || name.errors || description.errors || creationdate.errors || file.errors || idnprj.errors">
-						<button class="btn btn-success" (click)="saveDocument()" disabled="">Guardar</button>
+					<div *ngIf="shortnamedoc.errors || name.errors || description.errors || creationdate.errors || file.errors || shortnamespr.errors">
+						<button class="btn btn-success" (click)="updateDocument()" disabled>Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
 					</div>
 
-					<div *ngIf="!shortname.errors && !name.errors && !description.errors && !creationdate.errors && !file.errors && !idnprj.errors">
-						<button class="btn btn-success" (click)="saveDocument()">Guardar</button>
+					<div *ngIf="!shortnamedoc.errors && !name.errors && !description.errors && !creationdate.errors && !file.errors && !shortnamespr.errors">
+						<button class="btn btn-success" (click)="updateDocument()">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
 					</div>
 				</div>
-			</div>-->
+			</div>
 		</div>
 	</form>
 </ba-card>

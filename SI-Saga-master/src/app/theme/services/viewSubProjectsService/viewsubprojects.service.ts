@@ -19,6 +19,20 @@ export class ViewSubProjectsService {
 
   }
 
+  deleteSubProject(id: number): Observable<SubProject> {
+    let url = `${this.url}/delete/${id}`;
+    return this.http.delete(url)
+      .map(r => r.json())
+      .catch(this.handleError);
+  }
+
+  getSubProject(id: number): Observable<SubProject> {
+    let url = `${this.url}/find/${id}`;
+    return this.http.get(url)
+      .map(r => r.json())
+      .catch(this.handleError);
+  }
+
   getSubProjects(): Observable<SubProject[]> {
     let url = `${this.url}/findall`;
     return this.http.get(url)

@@ -51,32 +51,39 @@ export class Generalproject {
   }
 
   resetForm() {
-    
-    this.project.shortnamegnp = '';
-    this.project.name = '';
-    this.project.description = '';
-    this.project.creationdate = '';
-    this.typeProject.idnprjtype = null;
-    this.typeProject.name = '';
-    this.author.idnauthor = null;
-    this.author.name = '';
+    if(confirm("¿Desea cancelar la acción?")==true){
+      this.project.shortnamegnp = '';
+      this.project.name = '';
+      this.project.description = '';
+      this.project.creationdate = '';
+      this.typeProject.idnprjtype = null;
+      this.typeProject.name = '';
+      this.author.idnauthor = null;
+      this.author.name = '';
+    }
+
    }
 
   goSubProject() {
-    this.saveProject();
-    let link = ['pages/projects/subproject'];
-    this.router.navigate(link);
+    if(confirm("¿Desea Guardar y agregar un SubProyecto?")==true){
+      this.saveProject();
+      let link = ['pages/projects/subproject'];
+      this.router.navigate(link);     
+    }
   }
 
   saveProject() {
-    let conversionDate = this.project.creationdate.formatted;
-    this.project.creationdate = conversionDate;
-    this._viewProjectsService.addProject(this.project)
-    .subscribe(
-    rt => console.log(rt),
-    er => console.log(er),
-    () => console.log('Terminado')
-      );
+    if(confirm("¿Desea Guardar un SubProjecto?")==true){
+      let conversionDate = this.project.creationdate.formatted;
+      this.project.creationdate = conversionDate;
+      this._viewProjectsService.addProject(this.project)
+      .subscribe(
+      rt => console.log(rt),
+      er => console.log(er),
+      () => console.log('Terminado')
+        );
+    }
+
   }
 
   loadTypeProjects() {

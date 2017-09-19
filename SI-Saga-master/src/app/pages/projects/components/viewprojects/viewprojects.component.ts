@@ -10,6 +10,12 @@ import { TypeProjects } from '../../../../theme/services/typeProjectsService/typ
 import { Labels } from '../../../../theme/services/labelsService/labels';
 import { Projects } from '../../../../theme/services/viewProjectsService/projects';
 import { SubProject } from '../../../../theme/services/viewSubProjectsService/subproject';
+import { Location } from '@angular/common';
+import { Validators } from '@angular/forms';
+import 'rxjs/add/operator/switchMap';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
+import { Editproject} from '../editproject/editproject.component';
 
 
 @Component({
@@ -34,11 +40,17 @@ export class Viewprojects  {
   rowsOnPage = 10;
   sortBy = 'shortnamegnr';
   sortOrder = 'asc';
+  projectSelection: Projects;
+  subProjectSelection: SubProject;
 
   constructor(private _viewProjectsService: ViewProjectsService,
     private _viewSubProjectsService: ViewSubProjectsService,
     private _viewAuthorsService: ViewAuthorsService,
-    private _labelsService: LabelsService, private _typeProjectsService: TypeProjectsService) {
+    private _labelsService: LabelsService, private _typeProjectsService: TypeProjectsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  ) {
 
     this.loadTypeProjects();
     this.loadAuthors();
@@ -48,6 +60,10 @@ export class Viewprojects  {
    
   }
 
+  ngOnitInit() {
+    
+
+  }
 
   toInt(num: string) {
     return +num;
@@ -56,6 +72,58 @@ export class Viewprojects  {
 sortByWordLength = (a: any) => {
     return a.shortnamegnr.length;
 }
+
+
+goEditProject(project: Projects){
+  if(confirm("¿Desea Actualizar un proyecto?")==true){
+    this.projectSelection = project;
+    let id = this.projectSelection.idgnrprj;
+      let link = ['pages/projects/editproject', id ];
+      this.router.navigate(link);  
+  }
+  
+  }
+
+
+  goDeleteProject(project: Projects){
+    if(confirm("¿Desea Eliminar un Proyecto?")==true){
+      this._viewProjectsService.deleteProject(project.idgnrprj)
+      .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+      
+        );
+
+    }
+
+  }
+
+  goDeleteSubProject(subProject: SubProject){
+    if(confirm("¿Desea Eliminar un Subproyecto?")==true){
+      this._viewSubProjectsService.deleteSubProject(subProject.idnprj)
+      .subscribe(
+        rt => console.log(rt),
+        er => console.log(er),
+        () => console.log('Terminado')
+      
+        );
+      
+    }
+
+      }
+  
+  goEditSubProject(subProject: SubProject){
+    if(confirm("¿Desea Editar el subproyecto?")==true){
+     this.subProjectSelection = subProject;
+     let id = this.subProjectSelection.idnprj;
+     let link = ['pages/projects/editproject',id ];
+     this.router.navigate(link);  
+
+    }
+    
+    }
+  
 
   loadSubProjects() {
 

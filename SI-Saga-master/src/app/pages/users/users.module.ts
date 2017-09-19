@@ -18,8 +18,6 @@ import { DataFilterPipe } from './data-filter.pipe';
 import { HotTable, HotTableModule } from 'ng2-handsontable';
 
 
-
-
 @NgModule({
   imports: [
     CommonModule,

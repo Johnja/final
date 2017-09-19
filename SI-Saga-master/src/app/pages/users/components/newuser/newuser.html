@@ -59,9 +59,9 @@
 				<div class="form-group col-md-6">
 					<label for="email" class="control-label col-md-12">Email:</label>
 					<div class="col-md-12">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" 
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email" 
 						[(ngModel)]="user.email" #email="ngModel"
-						 required>
+						 required pattern = "^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 						<div *ngIf="email.errors">
 							<div *ngIf="!email.valid && email.touched" class="alert alert-danger">
 								<strong>Warning!</strong>Verifique Email
@@ -107,7 +107,7 @@
 					<div *ngIf="!name.errors && !lastname.errors && !nameuser.errors && !email.errors && !idnrole.errors">
 						<button class="btn btn-success" (click)="saveUser()">Guardar</button>
 						<button class="btn btn-info" (click)="resetForm()">Cancelar</button>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
